@@ -3,6 +3,8 @@ import React, { useRef } from "react";
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const ContainerScroll = ({
   titleComponent,
@@ -96,7 +98,10 @@ export const Navigator = () => {
           ))}
         </div>
         <Link className=' ' legacyBehavior href='https://masmax.vercel.app/'>
-          <a className='text-purple-600'>Check live sites</a>
+          <a className='text-purple-600'>
+            Check live sites{" "}
+            <span>{<FontAwesomeIcon icon={faArrowRight} />}</span>
+          </a>
         </Link>
       </div>
     </div>

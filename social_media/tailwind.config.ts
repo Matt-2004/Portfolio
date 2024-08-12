@@ -13,7 +13,11 @@ const config: Config = {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "roboto-mono": ["Roboto Mono", "monospace"],
+      },
+    },
   },
   plugins: [addVariablesForColors],
 };
