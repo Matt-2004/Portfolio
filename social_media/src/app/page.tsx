@@ -17,10 +17,10 @@ export default function Home() {
   const projectRef = useRef<HTMLDivElement>(null);
   return (
     <ProjectContext.Provider value={{ projectRef }}>
-      <div className='w-screen h-screen '>
+      <div className='w-full h-full max-sm:overflow-hidden'>
         <Navbar />
         <Hero />
-        <Projects />
+        {/* <Projects /> */}
       </div>
     </ProjectContext.Provider>
   );

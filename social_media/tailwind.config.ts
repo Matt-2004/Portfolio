@@ -16,6 +16,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         "roboto-mono": ["Roboto Mono", "monospace"],
+        "grey-qo": ["Grey Qo", "cursive"],
       },
     },
   },
