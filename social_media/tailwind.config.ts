@@ -14,10 +14,7 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
-      fontFamily: {
-        "roboto-mono": ["Roboto Mono", "monospace"],
-        "grey-qo": ["Grey Qo", "cursive"],
-      },
+      fontFamily: {},
     },
   },
   plugins: [addVariablesForColors],

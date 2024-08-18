@@ -1,9 +1,7 @@
-import { scrollToRef, useProjectRefContext } from "@/lib/dryAvoider";
-import { RefObject, useRef, useState } from "react";
+import { RefObject, useEffect, useRef, useState } from "react";
 import Glitch_button from "./glitch_button";
 
 const NavbarSelector = () => {
-  const projectRef = useProjectRefContext();
   const homeRef = useRef<HTMLOListElement>(null);
   const projectsRef = useRef<HTMLOListElement>(null);
   const contactRef = useRef<HTMLOListElement>(null);
@@ -36,11 +34,11 @@ const NavbarSelector = () => {
     }
   };
 
-  const onMouseLeaveHandleBtn = (ref: RefObject<HTMLOListElement>, e: any) => {
-    if (ref.current) {
-      ref.current.classList.remove("text-[#FC6736]");
-      getIdOfNavbarBtn(e);
-    }
+  useEffect(() => {
+    activateBtn();
+  }, []);
+
+  const activateBtn = () => {
     switch (activeBtn) {
       case "home":
         if (homeRef.current) {
@@ -61,6 +59,14 @@ const NavbarSelector = () => {
     }
   };
 
+  const onMouseLeaveHandleBtn = (ref: RefObject<HTMLOListElement>, e: any) => {
+    if (ref.current) {
+      ref.current.classList.remove("text-[#FC6736]");
+      getIdOfNavbarBtn(e);
+    }
+    activateBtn();
+  };
+
   const getIdOfNavbarBtn = (e: any) => {
     btnRef.current = e.target.id;
   };
@@ -74,7 +80,7 @@ const NavbarSelector = () => {
   };
 
   const navbaritemsStyle =
-    "cursor-pointer flex items-center uppercase px-2 py-3 text-center hover:bg-[#FFF851] sm:hover:bg-white sm:border-b-0 border-b-2";
+    "cursor-pointer flex items-center uppercase px-2 py-3 text-center sm:hover:bg-white sm:border-b-0 border-b-2";
   return (
     <ul className='flex sm:gap-4 max-sm:flex-col h-32 sm:h-12  text-lg sm:flex'>
       <ol
@@ -101,9 +107,7 @@ const NavbarSelector = () => {
         ref={projectsRef}
         onMouseEnter={(e) => onMouseEnterHandleBtn(projectsRef, e)}
         onMouseLeave={(e) => onMouseLeaveHandleBtn(projectsRef, e)}
-        onClick={(e) => {
-          scrollToRef(projectRef), handleClick(e);
-        }}
+        onClick={(e) => handleClick(e)}
         className={navbaritemsStyle}
       >
         <svg
