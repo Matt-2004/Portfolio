@@ -7,21 +7,15 @@ const Projects = () => {
       url: "https://masmax.vercel.app/",
       overview:
         "MASMAX aims to provide a reliable and user-friendly experience for moviegoers, combining the convenience of online ticket purchasing with the assurance of top-tier security measures.",
-      techStack: [
-        "/go-gopher-svgrepo-com.svg",
-        "/next.svg",
-        "/tailwind-css.svg",
-        "/react-svgrepo-com.svg",
-        "/typescript-icon-svgrepo-com.svg",
-      ],
+      techStack: ["Go", "NextJS", "Tailwind_CSS", "React", "Typescript"],
     },
     PORTFOLIO: {},
   };
 
   return (
     <div className='w-full h-screen flex justify-center'>
-      <div className='w-[80%]'>
-        <div className='flex items-center mb-10'>
+      <div className='w-[90%] md:mt-4'>
+        <div className='flex items-center'>
           <div className=' h-5 bg-[#FC6736] w-1 mr-1' />
 
           <span className='text-xl font-bold  '>PROJECTS</span>
@@ -61,10 +55,10 @@ const PJCards = ({
 }: IPJCards) => {
   return (
     <section id='project'>
-      <div className=''>
+      <div className=' max-w-[22rem] min-w-[18rem] pb-4 px-3 py-3 rounded-lg mt-4 flex flex-col items-center bg-[#0A192F]'>
         <div>
-          <span className='flex items-center my-3'>
-            <a href={url} className='text-2xl  font-bold'>
+          <span className='flex items-center '>
+            <a href={url} className='text-xl text-white  font-medium'>
               {title}
             </a>{" "}
             <svg
@@ -86,29 +80,25 @@ const PJCards = ({
             height={height}
             src={image}
             alt='masmax'
-            className='object-contain rounded-md'
+            className='object-contain mt-3  rounded-sm'
           />
         </div>
-        <div className='max-w-[30rem] min-w-[21rem]'>
-          <div className=' font-medium text-lg my-2'>Overview</div>
-          <div className='w-[21rem] text-gray-500  font-medium text-[1rem] leading-6'>
+        <div className=' mt-4'>
+          <div className='w-[20rem] text-gray-300 text-sm leading-normal'>
             {overview}
           </div>
-          <div className='flex justify-between mt-4'>
-            <div className='flex '>
-              {techStack?.map((data, i) => {
-                return (
-                  <Image
-                    key={i}
-                    className='w-10 h-10  py-1 px-1'
-                    width={50}
-                    height={50}
-                    src={data}
-                    alt=''
-                  />
-                );
-              })}
-            </div>
+
+          <div className='flex flex-wrap gap-2 mt-4'>
+            {techStack?.map((data, i) => {
+              return (
+                <div
+                  key={i}
+                  className='py-1 px-2 text-xs font-medium text-teal-300 rounded-full bg-teal-400/10 '
+                >
+                  {data}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

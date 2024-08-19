@@ -7,9 +7,10 @@ import Projects from "components/Projects";
 export default function Home() {
   return (
     <main>
-      <div className='w-full h-full max-sm:overflow-hidden'>
-        <Navbar />
+      <Navbar />
+      <div className='w-screen h-full lg:h-screen lg:flex sm:relative overflow-x-hidden '>
         <Hero />
+
         <Projects />
       </div>
     </main>
