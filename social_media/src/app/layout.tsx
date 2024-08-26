@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Roboto_Mono } from "next/font/google";
 import "./globals.css";
 
-const roboto_Mono = Roboto_Mono({
+export const roboto_Mono = Roboto_Mono({
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
