@@ -5,7 +5,6 @@ import "./globals.css";
 export const roboto_Mono = Roboto_Mono({
   style: ["normal", "italic"],
   subsets: ["latin"],
-  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -19,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className={roboto_Mono.className}>{children}</body>
     </html>
   );
