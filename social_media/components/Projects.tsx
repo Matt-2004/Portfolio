@@ -130,7 +130,7 @@ const PJCards = ({
     <section id='projects' className='w-full flex justify-center'>
       <div className='space-y-4 flex flex-col justify-center items-center md:w-[80%] w-[98%] sm:w-[90%] md:px-10 md:py-10 py-4 px-5  z-30 relative overflow-hidden rounded-xl bg-gradient-to-r from-[#2C5364] via-[#203A43] to-[#0F2027] shadow-md'>
         <Title text='PROJECTS' />
-        <div className='w-[60%] space-y-3 flex flex-col justify-center items-center'>
+        <div className='w-[90%] sm:w-[60%] space-y-3 flex flex-col justify-center items-center'>
           <Image
             width={width}
             height={height}
