@@ -27,11 +27,17 @@ const NavbarSelector = () => {
       {Object.entries(ids).map(([key, item], i) => (
         <a
           key={i}
-          id={key}
-          onClick={(e) => setActive(e.currentTarget.id)}
+          onClick={(e) => {
+            setActive(key);
+            const targetId = document.getElementById(key);
+            if (targetId) {
+              targetId.scrollIntoView({ behavior: "smooth", inline: "start" });
+            }
+            console.log(active);
+          }}
           className={`${
             active === item.id ? "opacity-100" : "opacity-60"
-          } flex items-center gap-1 w-[15rem]  cursor-pointer group`}
+          } flex items-center gap-2 w-[15rem]  cursor-pointer group`}
         >
           <div
             className={`${
