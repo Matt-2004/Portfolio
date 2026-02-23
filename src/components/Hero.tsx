@@ -1,6 +1,6 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { JSX, useState } from "react";
 
 import { ArrowDownToLine, Github, Linkedin } from "lucide-react";
 import NavbarSelector from "./ui/navbarSelector";
@@ -23,7 +23,7 @@ const fadeUp = {
   visible: (i: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.6, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
 
@@ -44,7 +44,7 @@ const Hero = () => {
           className="relative mb-8"
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
         >
           {/* Orange border ring */}
           <div className="p-[3px] rounded-full bg-gradient-to-tr from-[#FC6736] to-orange-300">
@@ -71,7 +71,7 @@ const Hero = () => {
             className="mx-auto mt-2 h-[2px] rounded-full bg-gradient-to-r from-[#FC6736] to-orange-300"
             initial={{ width: 0 }}
             animate={{ width: "60%" }}
-            transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.9, delay: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
           />
         </motion.div>
 
@@ -182,7 +182,7 @@ export const About = () => {
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }}
     >
       <div className="flex items-center gap-4 mb-6">
         <span className="text-xs font-bold tracking-[0.25em] uppercase text-gray-500">About</span>

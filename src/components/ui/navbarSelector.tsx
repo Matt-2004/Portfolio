@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 
 const navItems = [
-  { id: "home",     label: "Home"     },
-  { id: "skills",   label: "Skills"   },
+  { id: "home", label: "Home" },
+  { id: "skills", label: "Skills" },
   { id: "projects", label: "Projects" },
-  { id: "contact",  label: "Contact"  },
+  { id: "contact", label: "Contact" },
 ];
 
 const scrollTo = (id: string) => {
@@ -28,7 +28,7 @@ const MobileNav = ({
       className="pointer-events-auto"
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
     >
       <div className="flex items-center gap-1 px-2 py-1.5 rounded-full border border-white/10 bg-[#050d1a]/80 backdrop-blur-md shadow-lg shadow-black/30">
         {navItems.map((item) => {
@@ -47,9 +47,8 @@ const MobileNav = ({
                 />
               )}
               <span
-                className={`relative z-10 transition-colors duration-200 ${
-                  isActive ? "text-[#FC6736]" : "text-gray-500 hover:text-gray-300"
-                }`}
+                className={`relative z-10 transition-colors duration-200 ${isActive ? "text-[#FC6736]" : "text-gray-500 hover:text-gray-300"
+                  }`}
               >
                 {item.label}
               </span>
@@ -78,13 +77,12 @@ const DesktopNav = ({
             key={item.id}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
           >
             <a
               onClick={() => { setActive(item.id); scrollTo(item.id); }}
-              className={`${
-                isActive ? "opacity-100" : "opacity-50 hover:opacity-75"
-              } flex items-center gap-3 w-[15rem] cursor-pointer transition-opacity duration-200`}
+              className={`${isActive ? "opacity-100" : "opacity-50 hover:opacity-75"
+                } flex items-center gap-3 w-[15rem] cursor-pointer transition-opacity duration-200`}
             >
               <motion.div
                 className="h-[2px] rounded-full bg-white"
@@ -92,9 +90,8 @@ const DesktopNav = ({
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
               />
               <span
-                className={`font-bold text-sm tracking-widest uppercase transition-all duration-200 ${
-                  isActive ? "text-white" : "text-gray-500"
-                }`}
+                className={`font-bold text-sm tracking-widest uppercase transition-all duration-200 ${isActive ? "text-white" : "text-gray-500"
+                  }`}
               >
                 {item.label}
               </span>
