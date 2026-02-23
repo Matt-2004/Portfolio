@@ -1,0 +1,127 @@
+"use client";
+import { motion } from "framer-motion";
+import { useState } from "react";
+
+const navItems = [
+  { id: "home",     label: "Home"     },
+  { id: "skills",   label: "Skills"   },
+  { id: "projects", label: "Projects" },
+  { id: "contact",  label: "Contact"  },
+];
+
+const scrollTo = (id: string) => {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", inline: "start" });
+};
+
+/* ── Mobile floating top bar ─────────────────────────────────── */
+const MobileNav = ({
+  active,
+  setActive,
+}: {
+  active: string;
+  setActive: (id: string) => void;
+}) => (
+  /* Full-width fixed row so justify-center works reliably */
+  <div className="lg:hidden fixed top-3 left-0 right-0 z-50 flex justify-center pointer-events-none">
+    <motion.nav
+      aria-label="Mobile navigation"
+      className="pointer-events-auto"
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="flex items-center gap-1 px-2 py-1.5 rounded-full border border-white/10 bg-[#050d1a]/80 backdrop-blur-md shadow-lg shadow-black/30">
+        {navItems.map((item) => {
+          const isActive = active === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => { setActive(item.id); scrollTo(item.id); }}
+              className="relative px-3.5 py-1.5 text-xs font-semibold tracking-widest uppercase rounded-full"
+            >
+              {isActive && (
+                <motion.span
+                  layoutId="mobile-pill"
+                  className="absolute inset-0 rounded-full bg-[#FC6736]/15 border border-[#FC6736]/30"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
+              <span
+                className={`relative z-10 transition-colors duration-200 ${
+                  isActive ? "text-[#FC6736]" : "text-gray-500 hover:text-gray-300"
+                }`}
+              >
+                {item.label}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </motion.nav>
+  </div>
+);
+
+/* ── Desktop sidebar nav ─────────────────────────────────────── */
+const DesktopNav = ({
+  active,
+  setActive,
+}: {
+  active: string;
+  setActive: (id: string) => void;
+}) => (
+  <nav aria-label="Page navigation" className="hidden lg:block">
+    <ul className="flex flex-col gap-3 mt-16 ml-10">
+      {navItems.map((item, i) => {
+        const isActive = active === item.id;
+        return (
+          <motion.li
+            key={item.id}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <a
+              onClick={() => { setActive(item.id); scrollTo(item.id); }}
+              className={`${
+                isActive ? "opacity-100" : "opacity-50 hover:opacity-75"
+              } flex items-center gap-3 w-[15rem] cursor-pointer transition-opacity duration-200`}
+            >
+              <motion.div
+                className="h-[2px] rounded-full bg-white"
+                animate={{ width: isActive ? 112 : 48 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              />
+              <span
+                className={`font-bold text-sm tracking-widest uppercase transition-all duration-200 ${
+                  isActive ? "text-white" : "text-gray-500"
+                }`}
+              >
+                {item.label}
+              </span>
+              {isActive && (
+                <motion.span
+                  layoutId="nav-dot"
+                  className="w-1.5 h-1.5 rounded-full bg-[#FC6736]"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
+            </a>
+          </motion.li>
+        );
+      })}
+    </ul>
+  </nav>
+);
+
+/* ── Combined export ─────────────────────────────────────────── */
+const NavbarSelector = () => {
+  const [active, setActive] = useState("home");
+  return (
+    <>
+      <MobileNav active={active} setActive={setActive} />
+      <DesktopNav active={active} setActive={setActive} />
+    </>
+  );
+};
+
+export default NavbarSelector;
