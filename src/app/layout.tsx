@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { Roboto_Mono } from "next/font/google";
+import { Inter } from 'next/font/google';
 import "./globals.css";
 
-const roboto_Mono = Roboto_Mono({
-  style: ["normal", "italic"],
-  subsets: ["latin"],
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap', // optional, helps prevent layout shift
 });
+
+
+
 
 export const metadata: Metadata = {
   title: "Wai Yan Aung - Portfolio",
@@ -22,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={roboto_Mono.className}>{children}</body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }
