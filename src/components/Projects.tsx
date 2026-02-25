@@ -337,9 +337,9 @@ const Projects = () => {
 
   return (
     <div className="w-full flex justify-center lg:border-l lg:border-white/5">
-      <div className="w-full px-4 sm:px-8 md:px-14 max-w-3xl">
+      <div className="w-full space-y-2 px-4 sm:px-8 md:px-14 max-w-3xl">
         {/* About */}
-        <div className="py-16 border-b border-white/5">
+        <div className="py-16 border-b border-white/5 rounded-xl px-5 -mx-5 bg-white/[0.02]">
           <About />
         </div>
 
