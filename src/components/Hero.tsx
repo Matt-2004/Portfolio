@@ -129,7 +129,7 @@ const Hero = () => {
 
           <motion.a
             className="flex gap-2 text-white bg-[#FC6736] font-semibold px-6 py-2.5 rounded-full items-center shadow-sm shadow-[#FC6736]/10 hover:bg-[#e55620] hover:shadow-md hover:shadow-[#FC6736]/20 transition-all duration-200"
-            href="/Resume.docx"
+            href="/Resume.pdf"
             download
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
