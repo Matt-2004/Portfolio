@@ -31,23 +31,55 @@ export const Title = ({ text }: { text: string }) => (
 
 /* ─── Skills data ─────────────────────────────────────────────── */
 const skillItems = [
+  // Frontend
   { label: "React", cat: "Frontend" },
-  { label: "NextJS", cat: "Frontend" },
-  { label: "Typescript", cat: "Frontend" },
+  { label: "Next.js", cat: "Frontend" },
+  { label: "TypeScript", cat: "Frontend" },
+  { label: "JavaScript (ES6+)", cat: "Frontend" },
   { label: "Tailwind CSS", cat: "Frontend" },
-  { label: "NodeJS", cat: "Backend" },
-  { label: "ExpressJS", cat: "Backend" },
+  { label: "HTML5", cat: "Frontend" },
+  { label: "CSS3", cat: "Frontend" },
+  { label: "@tanstack/react-virtual", cat: "Frontend" },
+
+  // Backend
+  { label: "Node.js", cat: "Backend" },
+  { label: "Express.js", cat: "Backend" },
+  { label: "REST API", cat: "Backend" },
+  { label: "JWT Authentication", cat: "Backend" },
   { label: "Golang", cat: "Backend" },
-  { label: "Firebase", cat: "Backend" },
+
+  // Database
   { label: "MongoDB", cat: "Database" },
-  { label: "PostgreSQL", cat: "Database" },
   { label: "MySQL", cat: "Database" },
+  { label: "PostgreSQL", cat: "Database" },
+
+
+  // Tools
+  { label: "Git", cat: "Tools" },
+  { label: "GitHub", cat: "Tools" },
+  { label: "Vercel", cat: "Tools" },
+  { label: "npm", cat: "Tools" },
+  { label: "Postman", cat: "Tools" },
+  { label: "Firebase", cat: "Database" },
+
+  // CS Fundamentals
+  { label: "Data Structures", cat: "CS Fundamentals" },
+  { label: "Algorithms", cat: "CS Fundamentals" },
+  { label: "Computer Architecture", cat: "CS Fundamentals" },
+
+  // Mobile
+  { label: "Android Studio", cat: "Mobile" },
+  { label: "Kotlin", cat: "Mobile" },
+  { label: "XML Layout (Traditional)", cat: "Mobile" },
 ];
 
 const catStyle: Record<string, string> = {
-  Frontend: "bg-orange-500/10 text-orange-300 border-orange-400/20",
-  Backend: "bg-sky-500/10   text-sky-300   border-sky-400/20",
-  Database: "bg-emerald-500/10 text-emerald-300 border-emerald-400/20",
+  Frontend: "bg-orange-500/10 text-orange-300 border border-orange-400/20",
+  Backend: "bg-sky-500/10 text-sky-300 border border-sky-400/20",
+  Database: "bg-emerald-500/10 text-emerald-300 border border-emerald-400/20",
+  Mobile: "bg-indigo-500/10 text-indigo-300 border border-indigo-400/20",
+  Tools: "bg-purple-500/10 text-purple-300 border border-purple-400/20",
+  "CS Fundamentals": "bg-rose-500/10 text-rose-300 border border-rose-400/20",
 };
 
 /* ─── Skills section ──────────────────────────────────────────── */
@@ -83,16 +115,21 @@ const Skills = () => (
       ))}
     </motion.div>
     <div className="flex gap-5 mt-5">
-      {["Frontend", "Backend", "Database"].map((cat) => (
+      {["Frontend", "Backend", "Database", "Tools", "CS Fundamentals", "Mobile"].map((cat) => (
         <div key={cat} className="flex items-center gap-1.5 text-xs text-gray-500">
           <span className={`w-2 h-2 rounded-full ${cat === "Frontend" ? "bg-orange-400" :
-            cat === "Backend" ? "bg-sky-400" : "bg-emerald-400"
+            cat === "Backend" ? "bg-sky-400" : cat === "Database" ? "bg-emerald-400" : cat === "Tools" ? "bg-purple-400" : cat === "CS Fundamentals" ? "bg-rose-400" : "bg-indigo-400"
             }`} />
           {cat}
         </div>
       ))}
     </div>
   </motion.section>
+);
+
+/* ─── Tech → category style lookup (reuses skillItems data) ──── */
+const techCatStyle: Record<string, string> = Object.fromEntries(
+  skillItems.map(({ label, cat }) => [label, catStyle[cat]])
 );
 
 /* ─── Project row ─────────────────────────────────────────────── */
@@ -103,71 +140,74 @@ interface IProject {
   techStack: string[];
   url: string;
   index: number;
+  latest: boolean
 }
 
-const ProjectRow = ({ image, title, overview, techStack, url, index }: IProject) => {
+const ProjectRow = ({ image, title, overview, techStack, url, index, latest }: IProject) => {
   const isEven = index % 2 === 0;
   return (
+
+    // Features project
+    // Title
+    // Image | Overview
+    // Tech Stack
     <motion.div
-      className={`group flex flex-col md:flex-row gap-8 items-center py-14 border-b border-white/5 ${isEven ? "" : "md:flex-row-reverse"
-        }`}
+      className={`group flex flex-col gap-5 py-8 border-b border-white/10  ${latest ? "border-b-0" : ""}`}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
       variants={fadeInUp}
     >
-      {/* Image */}
-      <motion.a
+
+
+      {/* Title */}
+      <a
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full md:w-1/2 overflow-hidden rounded-xl shadow-lg relative block"
-        whileHover={{ scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 200, damping: 22 }}
+        className="group/link inline-flex items-center gap-2 mb-2 w-full"
       >
-        <Image
-          src={image}
-          alt={title}
-          width={600}
-          height={400}
-          className="w-full h-auto object-cover"
-        />
-        {/* Hover overlay */}
-        <div className="absolute inset-0 bg-[#FC6736]/0 group-hover:bg-[#FC6736]/10 transition-colors duration-300 rounded-xl" />
-      </motion.a>
+        <h3 className="text-3xl font-bold text-white group-hover/link:text-[#FC6736] transition-colors duration-200">
+          {title}
+        </h3>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+          className="w-5 h-5 text-gray-400 group-hover/link:text-[#FC6736] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-all duration-200">
+          <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd" />
+        </svg>
+      </a>
 
-      {/* Text */}
-      <div className="w-full md:w-1/2 flex flex-col gap-4">
-        <div className="flex items-center gap-2">
-          <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#FC6736]">
-            Featured Project
-          </span>
-        </div>
-
-        <a
+      {/* Image | Overview */}
+      <div className={`w-full flex flex-col md:flex-row gap-6 items-start ${isEven ? "text-start" : "md:flex-row-reverse"}`}>
+        {/* Image */}
+        <motion.a
           href={url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group/link inline-flex items-center gap-2"
+          className="w-full md:w-2/5 overflow-hidden rounded-xl shadow-lg relative block shrink-0"
+          whileHover={{ scale: 1.02 }}
+          transition={{ type: "spring", stiffness: 200, damping: 22 }}
         >
-          <h3 className="text-2xl font-bold text-white group-hover/link:text-[#FC6736] transition-colors duration-200">
-            {title}
-          </h3>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-            className="w-5 h-5 text-gray-400 group-hover/link:text-[#FC6736] group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-all duration-200">
-            <path fillRule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clipRule="evenodd" />
-          </svg>
-        </a>
+          <Image
+            src={image}
+            alt={title}
+            width={600}
+            height={400}
+            className="w-full h-auto object-cover"
+          />
+          <div className="absolute inset-0 bg-[#FC6736]/0 group-hover:bg-[#FC6736]/10 transition-colors duration-300 rounded-xl" />
+        </motion.a>
 
-        <p className="text-gray-400 text-sm leading-relaxed">{overview}</p>
+        {/* Overview */}
+        <p className="text-gray-400 text-sm leading-relaxed md:w-3/5">{overview}</p>
+      </div>
 
-        <div className="flex flex-wrap gap-2 pt-1">
-          {techStack.map((tech, i) => (
-            <span key={i} className="px-2.5 py-1 text-xs font-semibold text-gray-400 bg-white/5 border border-white/10 rounded-full">
-              {tech}
-            </span>
-          ))}
-        </div>
+      {/* Tech Stack */}
+      <div className="flex flex-wrap gap-2 w-full mt-4">
+        {techStack.map((tech, i) => (
+          <span key={i} className={`px-2.5 py-1 text-xs font-semibold rounded-full border ${techCatStyle[tech] ?? "bg-white/5 text-gray-400 border-white/10"}`}>
+            {tech}
+          </span>
+        ))}
       </div>
     </motion.div>
   );
@@ -196,9 +236,6 @@ const Contact = () => {
     if (!formRef.current) return;
     setStatus("sending");
     setErrorMsg("");
-
-
-
 
     if (!serviceId || !templateId || !publicKey) {
       setErrorMsg("Email service is not configured.");
@@ -322,22 +359,22 @@ const Projects = () => {
       title: "MASMAX",
       url: "https://masmax.vercel.app/",
       overview:
-        "MASMAX provides a reliable and user-friendly experience for moviegoers, combining online ticket purchasing with top-tier security measures.",
-      techStack: ["React", "Vite", "Tailwind CSS", "Typescript", "Golang", "MongoDB"],
+        "Built a full-stack movie ticket booking platform with secure authentication, real-time seat availability, and payment-ready architecture. Implemented RESTful APIs using Golang and integrated MongoDB for scalable data management.",
+      techStack: ["React", "Tailwind CSS", "TypeScript", "Golang", "MongoDB"],
     },
     {
       image: "/gearup.png",
       title: "GearUp",
       url: "https://gear-up-opal.vercel.app/",
       overview:
-        "Gear Up is a car marketing and selling platform featuring vehicle listings, real-time chat, appointment booking, role-based dashboards, and secure authentication for a seamless buying and selling experience.",
-      techStack: ["React", "NextJS", "Tailwind CSS", "Typescript"],
+        "Developed the frontend of a car marketplace platform with responsive UI, vehicle listing pages, and role-based dashboards. Integrated REST APIs for dynamic data rendering and implemented client-side authentication handling. Optimized large vehicle lists using TanStack Virtual to improve scroll performance and reduce DOM rendering overhead.",
+      techStack: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
     },
   ];
 
   return (
     <div className="w-full flex justify-center lg:border-l lg:border-white/5">
-      <div className="w-full space-y-2 px-4 sm:px-8 md:px-14 max-w-3xl">
+      <div className="w-full space-y-2 px-4 sm:px-8 md:px-14 max-w-4xl">
         {/* About */}
         <div className="py-16 border-b border-white/5 rounded-xl px-5 -mx-5 bg-white/[0.02]">
           <About />
@@ -348,9 +385,9 @@ const Projects = () => {
 
         {/* Projects */}
         <section id="projects" className="pt-16 pb-4 rounded-xl px-5 -mx-5 bg-white/[0.03]">
-          <Title text="Projects" />
+          <Title text="Featured Projects" />
           {projects.map((p, i) => (
-            <ProjectRow key={i} {...p} index={i} />
+            <ProjectRow key={i} {...p} index={i} latest={projects.length === i + 1 ? true : false} />
           ))}
         </section>
 

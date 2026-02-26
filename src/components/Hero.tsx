@@ -190,18 +190,11 @@ export const About = () => {
       </div>
       <div className="leading-7 text-gray-400 text-sm">
         <p>
-          With two years of dedicated learning in Full Stack development, I have
-          cultivated a strong foundation in creating responsive, user-friendly
-          web interfaces. My journey has been fueled by curiosity and a passion
-          for technology, which led me to build{" "}
-          <a
-            onClick={scrollToProjects}
-            className="cursor-pointer text-[#FC6736] hover:underline underline-offset-2 font-semibold"
-          >
-            a variety of personal projects
-          </a>{" "}
-          that showcase my skills in <Skills skills={skills} />
-        </p>
+          Hi, I'm a second-year Computer Science student and a Front-End Developer who enjoys building modern, scalable web applications. I primarily work with Next.js and React to create responsive and user-friendly interfaces.
+
+          Beyond the frontend, I’m also experienced in backend development using Node.js and database technologies like MongoDB and MySQL. I have built RESTful APIs, implemented secure authentication systems, and handled deployment and debugging in real-world environments.
+
+          With a solid foundation in computer science, I aim to write clean, efficient, and scalable code while continuously improving my technical and problem-solving skills.</p>
         <AnimatePresence>
           {isShowAbout && (
             <motion.p
@@ -232,24 +225,7 @@ export const About = () => {
   );
 };
 
-interface ISkills {
-  skills: Record<string, string>;
-}
 
-const Skills: React.FC<ISkills> = ({ skills }) => {
-  return (
-    <>
-      {Object.entries(skills).map(([skill, style], i) => (
-        <span key={i} className="relative">
-          <strong className={style}>
-            {skill}
-            {skill !== "PostgreSQL" ? "," : "."}{" "}
-          </strong>
-        </span>
-      ))}
-    </>
-  );
-};
 
 interface IIcons {
   icon: Record<string, JSX.Element>;
