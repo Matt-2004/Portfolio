@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from 'next/font/google';
+import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 
 const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap', // optional, helps prevent layout shift
+  subsets: ["latin"],
+  display: "swap",
 });
-
-
-
 
 export const metadata: Metadata = {
   title: "Wai Yan Aung - Portfolio",
@@ -24,8 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body suppressHydrationWarning className={inter.className}>{children}</body>
+    <html lang="en">
+      <body suppressHydrationWarning className={inter.className}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

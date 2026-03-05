@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Theme tokens ────────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  --bg: #050d1a;
+  --bg-panel: #050d1a;
+  --bg-section: rgba(255, 255, 255, 0.02);
+  --bg-section-hi: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.07);
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --text-primary: #ffffff;
+  --text-body: #9ca3af; /* gray-400 */
+  --text-muted: #6b7280; /* gray-500 */
+  --text-faint: #374151; /* gray-700 */
+  --nav-bg: rgba(5, 13, 26, 0.8);
+  --pill-bg: rgba(255, 255, 255, 0.05);
+  --pill-border: rgba(255, 255, 255, 0.1);
+  --pill-text: #9ca3af;
+  --input-border: rgba(255, 255, 255, 0.1);
+  --scrollbar-track: transparent;
+}
+
+[data-theme="light"] {
+  --bg: #f5f5f0;
+  --bg-panel: #f5f5f0;
+  --bg-section: rgba(0, 0, 0, 0.025);
+  --bg-section-hi: rgba(0, 0, 0, 0.04);
+  --border: rgba(0, 0, 0, 0.07);
+  --border-subtle: rgba(0, 0, 0, 0.05);
+  --text-primary: #0f172a;
+  --text-body: #475569; /* slate-600 */
+  --text-muted: #94a3b8; /* slate-400 */
+  --text-faint: #cbd5e1; /* slate-300 */
+  --nav-bg: rgba(245, 245, 240, 0.85);
+  --pill-bg: rgba(0, 0, 0, 0.04);
+  --pill-border: rgba(0, 0, 0, 0.1);
+  --pill-text: #475569;
+  --input-border: rgba(0, 0, 0, 0.12);
+  --scrollbar-track: transparent;
+}
+
+/* ─── Base ────────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -13,15 +54,19 @@ body {
   overflow-x: hidden;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  background-color: #050d1a;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
-/* Custom scrollbar */
+/* ─── Custom scrollbar ────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
   background: #fc6736;

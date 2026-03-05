@@ -10,7 +10,9 @@ const navItems = [
 ];
 
 const scrollTo = (id: string) => {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", inline: "start" });
+  document
+    .getElementById(id)
+    ?.scrollIntoView({ behavior: "smooth", inline: "start" });
 };
 
 /* ── Mobile floating top bar ─────────────────────────────────── */
@@ -28,15 +30,25 @@ const MobileNav = ({
       className="pointer-events-auto"
       initial={{ opacity: 0, y: -16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
+      transition={{
+        duration: 0.5,
+        delay: 0.3,
+        ease: [0.22, 1, 0.36, 1] as const,
+      }}
     >
-      <div className="flex items-center gap-1 px-2 py-1.5 rounded-full border border-white/10 bg-[#050d1a]/80 backdrop-blur-md shadow-lg shadow-black/30">
+      <div
+        className="flex items-center gap-1 px-2 py-1.5 rounded-full border backdrop-blur-md shadow-lg shadow-black/20"
+        style={{ background: "var(--nav-bg)", borderColor: "var(--border)" }}
+      >
         {navItems.map((item) => {
           const isActive = active === item.id;
           return (
             <button
               key={item.id}
-              onClick={() => { setActive(item.id); scrollTo(item.id); }}
+              onClick={() => {
+                setActive(item.id);
+                scrollTo(item.id);
+              }}
               className="relative px-3.5 py-1.5 text-xs font-semibold tracking-widest uppercase rounded-full"
             >
               {isActive && (
@@ -47,8 +59,8 @@ const MobileNav = ({
                 />
               )}
               <span
-                className={`relative z-10 transition-colors duration-200 ${isActive ? "text-[#FC6736]" : "text-gray-500 hover:text-gray-300"
-                  }`}
+                className={`relative z-10 transition-colors duration-200 ${isActive ? "text-[#FC6736]" : ""}`}
+                style={!isActive ? { color: "var(--text-muted)" } : undefined}
               >
                 {item.label}
               </span>
@@ -77,21 +89,32 @@ const DesktopNav = ({
             key={item.id}
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8 + i * 0.1, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
+            transition={{
+              delay: 0.8 + i * 0.1,
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1] as const,
+            }}
           >
             <a
-              onClick={() => { setActive(item.id); scrollTo(item.id); }}
-              className={`${isActive ? "opacity-100" : "opacity-50 hover:opacity-75"
-                } flex items-center gap-3 w-[15rem] cursor-pointer transition-opacity duration-200`}
+              onClick={() => {
+                setActive(item.id);
+                scrollTo(item.id);
+              }}
+              className={`${
+                isActive ? "opacity-100" : "opacity-50 hover:opacity-75"
+              } flex items-center gap-3 w-[15rem] cursor-pointer transition-opacity duration-200`}
             >
               <motion.div
-                className="h-[2px] rounded-full bg-white"
+                className="h-[2px] rounded-full"
+                style={{ background: "var(--text-primary)" }}
                 animate={{ width: isActive ? 112 : 48 }}
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
               />
               <span
-                className={`font-bold text-sm tracking-widest uppercase transition-all duration-200 ${isActive ? "text-white" : "text-gray-500"
-                  }`}
+                className={`font-bold text-sm tracking-widest uppercase transition-all duration-200`}
+                style={{
+                  color: isActive ? "var(--text-primary)" : "var(--text-muted)",
+                }}
               >
                 {item.label}
               </span>
