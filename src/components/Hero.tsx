@@ -1,16 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { ArrowUpRight, Github, Linkedin } from "lucide-react";
 import NavbarSelector from "@/components/ui/navbarSelector";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import LangToggle from "@/components/ui/LangToggle";
 import { fadeUp } from "@/lib/animations";
+import { useLanguage } from "@/lib/LanguageContext";
 
 /* ─── Data ────────────────────────────────────────────────────── */
 const NAME = "WAI YAN AUNG";
-const ROLE = "Full-Stack Developer";
-const BIO =
-  "I build scalable and performant web applications focused on real-time systems, authentication flows, and clean UI architecture.";
-
 const socialLinks = [
   { name: "GitHub", href: "https://github.com/Matt-2004", icon: Github },
   {
@@ -22,36 +21,56 @@ const socialLinks = [
 
 /* ─── Hero panel ──────────────────────────────────────────────── */
 const Hero = () => {
+  const { t } = useLanguage();
+
   return (
-    <section className="w-full lg:w-[60%] sticky top-0 flex justify-center min-h-screen">
-      {/* Theme toggle — pinned top-right */}
-      <div className="absolute top-4 right-4 z-10">
-        <ThemeToggle />
-      </div>
-      <div className="max-w-full text-center pt-16 px-8 py-8 flex flex-col items-center">
-        {/* Profile image */}
+    <section 
+      id="home"
+      className="w-full lg:w-[60%] sticky top-0 flex justify-center min-h-screen overflow-hidden"
+    >
+      {/* Background glow effects strictly for Hero */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#FC6736]/5 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-orange-400/5 blur-[120px] pointer-events-none" />
+
+      <div className="max-w-full text-center pt-24 lg:pt-20 px-8 py-8 flex flex-col items-center z-10 w-full relative">
+        {/* Theme and Lang toggle — in document flow for mobile, absolute top-right for desktop */}
+        <div className="flex justify-center w-full gap-4 mb-10 lg:mb-0 lg:absolute lg:top-6 lg:right-6 lg:w-auto lg:justify-end z-50">
+          <LangToggle />
+          <ThemeToggle />
+        </div>
+
+        {/* Profile image with animated container */}
         <motion.div
-          className="relative mb-8"
-          initial={{ opacity: 0, scale: 0.7 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as const }}
+          className="relative mb-8 group"
+          initial={{ scale: 0.9, y: 15 }}
+          animate={{ scale: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="p-[3px] rounded-full bg-gradient-to-tr from-[#FC6736] to-orange-300">
-            <img
-              src="/myImage.png"
-              alt={NAME}
-              className="w-36 h-36 sm:w-40 sm:h-40 rounded-full object-cover block"
-            />
+          {/* Outer glowing halo */}
+          <div className="absolute -inset-2 bg-gradient-to-tr from-[#FC6736]/40 to-orange-300/40 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
+          <div className="relative p-[3px] rounded-[2.5rem] bg-gradient-to-tr from-[#FC6736] to-orange-300 shadow-2xl transform transition-transform duration-500 hover:rotate-3">
+            <div className="rounded-[2.5rem] overflow-hidden bg-[var(--bg)] transform transition-transform duration-500 -rotate-3 hover:rotate-0 relative w-36 h-36 sm:w-44 sm:h-44">
+              <Image
+                src="/myImage.png"
+                alt={NAME}
+                fill
+                priority
+                fetchPriority="high"
+                quality={90}
+                sizes="(max-width: 640px) 144px, 176px"
+                className="object-cover block scale-110 group-hover:scale-125 transition-transform duration-700 ease-out"
+              />
+            </div>
           </div>
         </motion.div>
 
         {/* Name */}
         <motion.div
           className="relative cursor-default"
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          custom={0}
+          initial={{ scale: 0.95, y: 15 }}
+          animate={{ scale: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <span
             className="text-5xl font-extrabold tracking-normal"
@@ -80,19 +99,19 @@ const Hero = () => {
           custom={1}
         >
           <span className="w-2 h-2 rounded-full bg-[#FC6736] animate-pulse" />
-          {ROLE}
+          {t.hero.role}
         </motion.div>
 
         {/* Bio */}
         <motion.p
-          className="font-medium text-sm max-w-[30rem] min-w-32 mt-6 leading-7 mx-auto px-4"
+          className="font-medium text-base md:text-lg max-w-[32rem] mt-6 leading-relaxed mx-auto px-4"
           style={{ color: "var(--text-body)" }}
           variants={fadeUp}
           initial="hidden"
           animate="visible"
           custom={2}
         >
-          {BIO}
+          {t.hero.bio}
         </motion.p>
 
         {/* Social icons + ThemeToggle + Resume */}
@@ -141,7 +160,7 @@ const Hero = () => {
             whileTap={{ scale: 0.97 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            View Resume
+            {t.hero.viewResume}
             <ArrowUpRight className="w-4 h-4" />
           </motion.a>
         </motion.div>

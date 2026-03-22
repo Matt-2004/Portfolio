@@ -4,10 +4,12 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRef, useState } from "react";
 import { fadeInUp } from "@/lib/animations";
 import Title from "@/components/ui/Title";
+import { useLanguage } from "@/lib/LanguageContext";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
 const Contact = () => {
+  const { t } = useLanguage();
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState({
     from_name: "",
@@ -85,32 +87,30 @@ const Contact = () => {
       viewport={{ once: true, margin: "-60px" }}
       variants={fadeInUp}
     >
-      <Title text="Get In Touch" />
+      <Title text={t.contact.title} />
 
       <div className="max-w-lg">
         <p
           className="text-sm leading-relaxed mb-8"
           style={{ color: "var(--text-body)" }}
         >
-          I am currently looking for new opportunities. Whether you have a
-          question, a project idea, or just want to say hi — my inbox is always
-          open.
+          {t.contact.desc}
         </p>
 
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="flex flex-col gap-7"
+          className="flex flex-col gap-6"
         >
           {/* Name + Email row */}
-          <div className="flex flex-col sm:flex-row gap-7">
-            <div className="flex-1 flex flex-col gap-1">
+          <div className="flex flex-col sm:flex-row gap-6">
+            <div className="flex-1 flex flex-col gap-2">
               <label
                 htmlFor="name"
                 className={labelClass}
                 style={{ color: "var(--text-muted)" }}
               >
-                Name
+                {t.contact.name}
               </label>
               <input
                 id="name"
@@ -118,17 +118,17 @@ const Contact = () => {
                 value={formData.from_name}
                 onChange={handleChange}
                 placeholder="John Doe"
-                className={fieldClass}
+                className="w-full bg-[var(--bg-section-hi)] border border-[var(--border)] rounded-lg outline-none px-4 py-3 text-sm transition-all duration-300 focus:border-[#FC6736] focus:ring-1 focus:ring-[#FC6736]/30 [color:var(--text-primary)] placeholder:[color:var(--text-muted)] opacity-80 focus:opacity-100"
                 required
               />
             </div>
-            <div className="flex-1 flex flex-col gap-1">
+            <div className="flex-1 flex flex-col gap-2">
               <label
                 htmlFor="email"
                 className={labelClass}
                 style={{ color: "var(--text-muted)" }}
               >
-                Email
+                {t.contact.email}
               </label>
               <input
                 id="email"
@@ -137,20 +137,20 @@ const Contact = () => {
                 value={formData.from_email}
                 onChange={handleChange}
                 placeholder="john@example.com"
-                className={fieldClass}
+                className="w-full bg-[var(--bg-section-hi)] border border-[var(--border)] rounded-lg outline-none px-4 py-3 text-sm transition-all duration-300 focus:border-[#FC6736] focus:ring-1 focus:ring-[#FC6736]/30 [color:var(--text-primary)] placeholder:[color:var(--text-muted)] opacity-80 focus:opacity-100"
                 required
               />
             </div>
           </div>
 
           {/* Message */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-2">
             <label
               htmlFor="message"
               className={labelClass}
               style={{ color: "var(--text-muted)" }}
             >
-              Message
+              {t.contact.message}
             </label>
             <textarea
               id="message"
@@ -158,8 +158,8 @@ const Contact = () => {
               value={formData.message}
               onChange={handleChange}
               placeholder="Your message..."
-              rows={4}
-              className={`${fieldClass} resize-none`}
+              rows={5}
+              className="w-full bg-[var(--bg-section-hi)] border border-[var(--border)] rounded-lg outline-none px-4 py-3 text-sm transition-all duration-300 focus:border-[#FC6736] focus:ring-1 focus:ring-[#FC6736]/30 [color:var(--text-primary)] placeholder:[color:var(--text-muted)] opacity-80 focus:opacity-100 resize-none"
               required
             />
           </div>
@@ -196,10 +196,10 @@ const Contact = () => {
                 </svg>
               )}
               {status === "sending"
-                ? "Sending…"
+                ? t.contact.sending
                 : status === "sent"
-                  ? "Message Sent ✓"
-                  : "Send Message"}
+                  ? t.contact.sent
+                  : t.contact.sendMsg}
             </motion.button>
 
             <AnimatePresence>
@@ -211,7 +211,7 @@ const Contact = () => {
                   exit={{ opacity: 0, y: 6 }}
                   className="text-emerald-400 text-xs font-medium"
                 >
-                  ✓ Thanks! I&apos;ll get back to you soon.
+                  {t.contact.successMsg}
                 </motion.p>
               )}
               {status === "error" && (
@@ -222,7 +222,7 @@ const Contact = () => {
                   exit={{ opacity: 0, y: 6 }}
                   className="text-red-400 text-xs font-medium"
                 >
-                  ✕ {errorMsg || "Something went wrong. Please try again."}
+                  {errorMsg || t.contact.errorMsg}
                 </motion.p>
               )}
             </AnimatePresence>

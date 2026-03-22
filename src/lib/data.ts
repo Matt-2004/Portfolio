@@ -6,24 +6,27 @@ export interface IProject {
   overview: string;
   techStack: string[];
   url: string;
+  githubUrl: string;
 }
 
 export const projects: IProject[] = [
   {
-    image: "/masmax.png",
-    title: "MASMAX",
-    url: "https://masmax.vercel.app/",
-    overview:
-      "Built a full-stack movie ticket booking platform with secure authentication, real-time seat availability, and payment-ready architecture. Implemented RESTful APIs using Golang and integrated MongoDB for scalable data management.",
-    techStack: ["React", "Tailwind CSS", "TypeScript", "Golang", "MongoDB"],
-  },
-  {
-    image: "/gearup.png",
+    image: "/gearup-v3.png",
     title: "GearUp",
     url: "https://gear-up-opal.vercel.app/",
+    githubUrl: "https://github.com/Matt-2004/GearUp",
     overview:
       "Developed the frontend of a car marketplace platform with responsive UI, vehicle listing pages, and role-based dashboards. Integrated REST APIs for dynamic data rendering and implemented client-side authentication handling. Optimized large vehicle lists using TanStack Virtual to improve scroll performance and reduce DOM rendering overhead.",
     techStack: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
+  },
+  {
+    image: "/masmax-v3.png",
+    title: "MASMAX",
+    url: "https://masmax.vercel.app/",
+    githubUrl: "https://github.com/Matt-2004/masmax",
+    overview:
+      "Developed a comprehensive movie browsing web application featuring secure user authentication, personalized watchlists, and a highly responsive frontend architecture. Implemented RESTful APIs using Java and integrated PostgreSQL for scalable data management.",
+    techStack: ["React", "Tailwind CSS", "TypeScript", "JAVA", "PostgreSQL"],
   },
 ];
 
@@ -43,13 +46,13 @@ export const skillItems: SkillItem[] = [
   { label: "Tailwind CSS", cat: "Frontend" },
   { label: "HTML5", cat: "Frontend" },
   { label: "CSS3", cat: "Frontend" },
-  { label: "@tanstack/react-virtual", cat: "Frontend" },
+
   // Backend
   { label: "Node.js", cat: "Backend" },
   { label: "Express.js", cat: "Backend" },
   { label: "REST API", cat: "Backend" },
   { label: "JWT Authentication", cat: "Backend" },
-  { label: "Golang", cat: "Backend" },
+  { label: "JAVA", cat: "Backend" },
   // Database
   { label: "MongoDB", cat: "Database" },
   { label: "MySQL", cat: "Database" },
@@ -62,13 +65,11 @@ export const skillItems: SkillItem[] = [
   { label: "npm", cat: "Tools" },
   { label: "Postman", cat: "Tools" },
   // CS Fundamentals
-  { label: "Data Structures", cat: "CS Fundamentals" },
-  { label: "Algorithms", cat: "CS Fundamentals" },
+  { label: "Data Structures & Algorithms", cat: "CS Fundamentals" },
   { label: "Computer Architecture", cat: "CS Fundamentals" },
   // Mobile
   { label: "Android Studio", cat: "Mobile" },
   { label: "Kotlin", cat: "Mobile" },
-  { label: "XML Layout (Traditional)", cat: "Mobile" },
 ];
 
 export const catStyle: Record<string, string> = {
