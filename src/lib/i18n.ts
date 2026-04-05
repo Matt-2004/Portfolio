@@ -1,14 +1,14 @@
 export const translations = {
   en: {
     hero: {
-      role: "Full-Stack Developer",
+      role: "Front-End Developer",
       bio: "I build scalable and performant web applications focused on real-time systems, authentication flows, and clean UI architecture.",
       viewResume: "View Resume",
     },
     about: {
       title: "About",
-      p1: "Hi, I'm a second-year Computer Science student and a Front-End Developer who enjoys building modern, scalable web applications. I primarily work with Next.js and React to create responsive and user-friendly interfaces. Beyond the frontend, I'm also experienced in backend development using Node.js and database technologies like MongoDB and MySQL. I have built RESTful APIs, implemented secure authentication systems, and handled deployment and debugging in real-world environments. With a solid foundation in computer science, I aim to write clean, efficient, and scalable code while continuously improving my technical and problem-solving skills.",
-      p2: "While I have not yet gained formal work experience, my hands-on approach to learning has allowed me to tackle real-world challenges and continuously improve my craft. I am excited to contribute my skills to collaborative projects and continue growing as a developer.",
+      p1: "I’m a second-year Computer Science student and Front-End Developer focused on building scalable, high-performance web applications. I specialize in Next.js and React, delivering clean, responsive, and user-centric interfaces.",
+      p2: "I don’t wait for experience — I build it. Through hands-on projects, I’ve strengthened my system thinking, and developed a strong engineering mindset. I’m driven to write clean, efficient code, contribute to impactful products, and grow into an engineer who delivers both technical excellence and real user value.",
       readMore: "Read more",
       showLess: "Show less",
     },
@@ -37,7 +37,7 @@ export const translations = {
         {
           title: "MASMAX",
           overview:
-            "Developed a comprehensive movie browsing web application featuring secure user authentication, personalized watchlists, and a highly responsive frontend architecture. Implemented RESTful APIs using Java and integrated PostgreSQL for scalable data management.",
+            "Developed a comprehensive movie browsing web application featuring secure user authentication with Supabase, personalized watchlists, and a highly responsive frontend architecture.",
         },
       ],
     },
@@ -65,14 +65,14 @@ export const translations = {
   },
   zh: {
     hero: {
-      role: "全栈开发工程师",
+      role: "前端开发工程师",
       bio: "我致力于构建可扩展且高性能的Web应用程序，专注于实时系统、身份验证流程以及整洁的UI架构。",
       viewResume: "查看简历",
     },
     about: {
       title: "关于我",
-      p1: "你好，我是一名大二的计算机科学专业学生和一名前端开发人员，热衷于构建现代且可扩展的Web应用。我主要使用 Next.js 和 React 进行响应式和用户友好界面的开发。除了前端，我也具备使用 Node.js 以及 MongoDB、MySQL 等数据库技术进行后端开发的经验。我曾构建 RESTful API，实现安全的身份验证系统，并处理过真实环境中的部署和调试工作。凭借扎实的计算机科学基础，我的目标是编写整洁、高效且可扩展的代码，同时不断提高我的技术和解决问题的能力。",
-      p2: "虽然我还没有正式的工作经验，但我通过亲身实践的方法应对了现实世界中的挑战，并不断磨练我的手艺。我很高兴能将我的技能应用到协同项目中，并作为一名开发者不断成长。",
+      p1: "我是一名大二计算机科学学生兼前端开发者，专注于构建可扩展、高性能的 Web 应用。我专长于 Next.js 和 React，能够交付整洁、响应迅速且以用户为中心的界面。",
+      p2: "我不会等待经验——我会主动创造经验。通过亲手实践的项目，我强化了系统性思维，并培养了扎实的工程思维。我始终坚持编写整洁、高效的代码，致力于为有影响力的产品做出贡献，并成长为一名既追求技术卓越又创造真实用户价值的工程师。",
       readMore: "阅读更多",
       showLess: "收起",
     },
@@ -101,7 +101,7 @@ export const translations = {
         {
           title: "MASMAX",
           overview:
-            "开发了一款全面的电影浏览Web应用，包含安全的用户身份验证、个性化的待看清单以及高响应式的前端架构。使用 Java 实现了 RESTful API，并集成了 PostgreSQL 以进行可扩展的数据管理。",
+            "开发了一款全面的电影浏览 Web 应用，包含基于 Supabase 的安全用户身份验证、个性化待看清单以及高响应式的前端架构。",
         },
       ],
     },
