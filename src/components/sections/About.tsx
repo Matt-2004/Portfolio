@@ -1,31 +1,73 @@
 "use client";
 import { motion } from "framer-motion";
 import {
-  SiTypescript, SiJavascript, SiHtml5, SiCss,
-  SiReact, SiNextdotjs, SiNodedotjs, SiExpress, SiTailwindcss,
-  SiReactquery, SiAxios, SiZod, SiReacthookform, SiReactrouter, SiRedux,
-  SiCloudinary, SiSupabase,
-  SiJest, SiGithubactions, SiDocker, SiVercel, SiGit, SiPostgresql,
+  SiTypescript,
+  SiJavascript,
+  SiHtml5,
+  SiCss,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiTailwindcss,
+  SiReactquery,
+  SiAxios,
+  SiZod,
+  SiReacthookform,
+  SiReactrouter,
+  SiRedux,
+  SiCloudinary,
+  SiSupabase,
+  SiJest,
+  SiGithubactions,
+  SiDocker,
+  SiVercel,
+  SiGit,
+  SiPostgresql,
 } from "react-icons/si";
 import { FlaskConical, Radio, Gauge, Globe } from "lucide-react";
-import { skillItems, skillColors } from "@/lib/data";
-import { staggerContainer, springPill } from "@/lib/animations";
-import { useLanguage } from "@/lib/LanguageContext";
-import ScrollReveal from "@/components/ui/ScrollReveal";
+import { staggerContainer, springPill } from "../../lib/animations";
+import { skillItems } from "../../lib/data";
+import { useLanguage } from "../../lib/LanguageContext";
+import ScrollReveal from "../ui/ScrollReveal";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  typescript: SiTypescript, javascript: SiJavascript, html5: SiHtml5, css3: SiCss,
-  react: SiReact, nextjs: SiNextdotjs, nodejs: SiNodedotjs, express: SiExpress,
+  typescript: SiTypescript,
+  javascript: SiJavascript,
+  html5: SiHtml5,
+  css3: SiCss,
+  react: SiReact,
+  nextjs: SiNextdotjs,
+  nodejs: SiNodedotjs,
+  express: SiExpress,
   tailwind: SiTailwindcss,
-  reactquery: SiReactquery, axios: SiAxios, zod: SiZod,
-  reacthookform: SiReacthookform, reactrouter: SiReactrouter, redux: SiRedux,
-  cloudinary: SiCloudinary, supabase: SiSupabase,
-  jest: SiJest, playwright: FlaskConical, jestaxe: Gauge, lighthouse: Globe,
-  docker: SiDocker, vercel: SiVercel, githubactions: SiGithubactions,
-  git: SiGit, postgresql: SiPostgresql, restapi: Radio, signalr: Radio,
+  reactquery: SiReactquery,
+  axios: SiAxios,
+  zod: SiZod,
+  reacthookform: SiReacthookform,
+  reactrouter: SiReactrouter,
+  redux: SiRedux,
+  cloudinary: SiCloudinary,
+  supabase: SiSupabase,
+  jest: SiJest,
+  playwright: FlaskConical,
+  jestaxe: Gauge,
+  lighthouse: Globe,
+  docker: SiDocker,
+  vercel: SiVercel,
+  githubactions: SiGithubactions,
+  git: SiGit,
+  postgresql: SiPostgresql,
+  restapi: Radio,
+  signalr: Radio,
 };
 
-const catOrder = ["Languages & Frameworks", "Libraries & Tools", "Testing & Quality", "Infrastructure"] as const;
+const catOrder = [
+  "Languages & Frameworks",
+  "Libraries & Tools",
+  "Testing & Quality",
+  "Infrastructure",
+] as const;
 
 export default function About() {
   const { t } = useLanguage();
@@ -36,7 +78,11 @@ export default function About() {
   }));
 
   return (
-    <section id="about" className="py-24 md:py-32 px-6 md:px-8" style={{ backgroundColor: "#fc6903" }}>
+    <section
+      id="about"
+      className="py-24 md:py-32 px-6 md:px-8"
+      style={{ backgroundColor: "#fc6903" }}
+    >
       <div className="max-w-4xl mx-auto">
         {/* Heading */}
         <ScrollReveal>
@@ -56,8 +102,16 @@ export default function About() {
                 { value: "100", label: "Lighthouse Score", dominant: false },
               ].map((s) => (
                 <div key={s.label} className="flex items-baseline gap-3">
-                  <span className={`font-display font-extrabold tracking-[-0.02em] text-black ${s.dominant ? "text-5xl" : "text-2xl opacity-60"}`}>{s.value}</span>
-                  <span className={`font-label uppercase tracking-[0.08em] ${s.dominant ? "text-xs text-black/60" : "text-[10px] text-black/40"}`}>{s.label}</span>
+                  <span
+                    className={`font-display font-extrabold tracking-[-0.02em] text-black ${s.dominant ? "text-5xl" : "text-2xl opacity-60"}`}
+                  >
+                    {s.value}
+                  </span>
+                  <span
+                    className={`font-label uppercase tracking-[0.08em] ${s.dominant ? "text-xs text-black/60" : "text-[10px] text-black/40"}`}
+                  >
+                    {s.label}
+                  </span>
                 </div>
               ))}
             </div>
@@ -85,7 +139,9 @@ export default function About() {
               <ScrollReveal key={cat}>
                 <div>
                   <h3 className="font-label text-[11px] uppercase tracking-[0.15em] text-black mb-4">
-                    {t.skills.categories[cat as keyof typeof t.skills.categories] || cat}
+                    {t.skills.categories[
+                      cat as keyof typeof t.skills.categories
+                    ] || cat}
                   </h3>
                   <motion.div
                     className="flex flex-wrap gap-2"

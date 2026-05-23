@@ -1,7 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
-import { fadeLift, staggerContainer, fadeLiftChild } from "@/lib/animations";
-import { useRef } from "react";
+import {
+  staggerContainer,
+  fadeLiftChild,
+  fadeLift,
+} from "../../lib/animations";
 
 interface ScrollRevealProps {
   children: React.ReactNode;

@@ -225,26 +225,6 @@ export const skillItems: SkillItem[] = [
   { label: "SignalR", cat: "Infrastructure", iconKey: "signalr" },
 ];
 
-/* Category accent colors for pills */
-const catAccent = {
-  "Languages & Frameworks": {
-    bg: "#22D3EE12",
-    text: "#22D3EE",
-    border: "#22D3EE33",
-  },
-  "Libraries & Tools": {
-    bg: "#8B5CF612",
-    text: "#A78BFA",
-    border: "#8B5CF633",
-  },
-  "Testing & Quality": {
-    bg: "#8B5CF612",
-    text: "#A78BFA",
-    border: "#8B5CF633",
-  },
-  Infrastructure: { bg: "#0492fb12", text: "#0492fb", border: "#0492fb33" },
-};
-
 export const catStyle: Record<string, string> = {
   "Languages & Frameworks":
     "bg-[#22D3EE]/10 text-[#22D3EE] border-[#22D3EE]/25",

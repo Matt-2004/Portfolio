@@ -1,9 +1,10 @@
 "use client";
-import { GitHubCalendar } from "react-github-calendar";
+
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../../lib/LanguageContext";
 import { useTheme } from "../../context/ThemeContext";
+import GitHubCalendar from "react-github-calendar";
 
 export default function GithubGraph() {
   const { t, language } = useLanguage();

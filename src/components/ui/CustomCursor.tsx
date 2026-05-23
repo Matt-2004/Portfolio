@@ -24,7 +24,7 @@ export default function CustomCursor() {
 
     const bindHover = () => {
       const targets = document.querySelectorAll(
-        'a, button, [data-cursor-hover], input, textarea, [role="button"]'
+        'a, button, [data-cursor-hover], input, textarea, [role="button"]',
       );
       targets.forEach((el) => {
         el.addEventListener("mouseenter", onEnter);
@@ -54,7 +54,6 @@ export default function CustomCursor() {
   if (!visible) return null;
 
   const size = hovering ? 48 : 16;
-  const cursorColor = "var(--text-primary)";
 
   return (
     <div
@@ -68,7 +67,8 @@ export default function CustomCursor() {
         backgroundColor: hovering ? "transparent" : "var(--text-primary)",
         border: hovering ? "2px solid rgba(240, 238, 248, 0.9)" : "none",
         mixBlendMode: "difference",
-        transition: "width 0.15s, height 0.15s, margin-left 0.15s, margin-top 0.15s, background-color 0.15s, border 0.15s",
+        transition:
+          "width 0.15s, height 0.15s, margin-left 0.15s, margin-top 0.15s, background-color 0.15s, border 0.15s",
         willChange: "transform",
       }}
     >

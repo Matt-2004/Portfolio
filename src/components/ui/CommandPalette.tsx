@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { Search, ArrowRight, Command, CornerDownLeft } from "lucide-react";
-import { projects } from "@/lib/data";
+import { projects } from "../../lib/data";
 
 interface Action {
   id: string;
@@ -20,11 +20,36 @@ export default function CommandPalette() {
   const router = useRouter();
 
   const actions: Action[] = [
-    { id: "hero", label: "Go to Hero", section: "Navigation", action: () => scrollTo("hero") },
-    { id: "work", label: "Go to Projects", section: "Navigation", action: () => scrollTo("work") },
-    { id: "about", label: "Go to About", section: "Navigation", action: () => scrollTo("about") },
-    { id: "contact", label: "Go to Contact", section: "Navigation", action: () => scrollTo("contact") },
-    { id: "resume", label: "Open Resume", section: "Actions", action: () => window.open("/Resume.pdf", "_blank") },
+    {
+      id: "hero",
+      label: "Go to Hero",
+      section: "Navigation",
+      action: () => scrollTo("hero"),
+    },
+    {
+      id: "work",
+      label: "Go to Projects",
+      section: "Navigation",
+      action: () => scrollTo("work"),
+    },
+    {
+      id: "about",
+      label: "Go to About",
+      section: "Navigation",
+      action: () => scrollTo("about"),
+    },
+    {
+      id: "contact",
+      label: "Go to Contact",
+      section: "Navigation",
+      action: () => scrollTo("contact"),
+    },
+    {
+      id: "resume",
+      label: "Open Resume",
+      section: "Actions",
+      action: () => window.open("/Resume.pdf", "_blank"),
+    },
     ...projects.map((p) => ({
       id: `project-${p.title}`,
       label: `View ${p.title} Case Study`,
@@ -58,9 +83,20 @@ export default function CommandPalette() {
         return;
       }
       if (!open) return;
-      if (e.key === "Escape") { setOpen(false); return; }
-      if (e.key === "ArrowDown") { e.preventDefault(); setActiveIdx((i) => Math.min(i + 1, filtered.length - 1)); return; }
-      if (e.key === "ArrowUp") { e.preventDefault(); setActiveIdx((i) => Math.max(i - 1, 0)); return; }
+      if (e.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setActiveIdx((i) => Math.min(i + 1, filtered.length - 1));
+        return;
+      }
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setActiveIdx((i) => Math.max(i - 1, 0));
+        return;
+      }
       if (e.key === "Enter" && filtered[activeIdx]) {
         e.preventDefault();
         filtered[activeIdx].action();
@@ -97,7 +133,10 @@ export default function CommandPalette() {
           <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
           <motion.div
             className="relative w-full max-w-lg rounded-2xl border overflow-hidden shadow-2xl"
-            style={{ backgroundColor: "var(--bg-elevated)", borderColor: "var(--border-mid)" }}
+            style={{
+              backgroundColor: "var(--bg-elevated)",
+              borderColor: "var(--border-mid)",
+            }}
             initial={{ opacity: 0, y: -12, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -12, scale: 0.96 }}
@@ -105,17 +144,32 @@ export default function CommandPalette() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Search input */}
-            <div className="flex items-center gap-3 px-5 py-4 border-b" style={{ borderColor: "var(--border-dim)" }}>
-              <Search className="w-4 h-4 shrink-0" style={{ color: "var(--text-muted)" }} />
+            <div
+              className="flex items-center gap-3 px-5 py-4 border-b"
+              style={{ borderColor: "var(--border-dim)" }}
+            >
+              <Search
+                className="w-4 h-4 shrink-0"
+                style={{ color: "var(--text-muted)" }}
+              />
               <input
                 ref={inputRef}
                 value={query}
-                onChange={(e) => { setQuery(e.target.value); setActiveIdx(0); }}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  setActiveIdx(0);
+                }}
                 placeholder="Search sections, projects, actions..."
                 className="flex-1 bg-transparent outline-none font-body text-sm"
                 style={{ color: "var(--text-primary)" }}
               />
-              <kbd className="hidden sm:flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono" style={{ background: "rgba(255,255,255,0.06)", color: "var(--text-muted)" }}>
+              <kbd
+                className="hidden sm:flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono"
+                style={{
+                  background: "rgba(255,255,255,0.06)",
+                  color: "var(--text-muted)",
+                }}
+              >
                 <CornerDownLeft className="w-3 h-3" /> select
               </kbd>
             </div>
@@ -123,39 +177,63 @@ export default function CommandPalette() {
             {/* Results */}
             <div className="max-h-72 overflow-y-auto p-2">
               {filtered.length === 0 && (
-                <p className="text-center py-8 font-body text-xs" style={{ color: "var(--text-muted)" }}>
+                <p
+                  className="text-center py-8 font-body text-xs"
+                  style={{ color: "var(--text-muted)" }}
+                >
                   No results found
                 </p>
               )}
               {filtered.map((a, i) => (
                 <button
                   key={a.id}
-                  onClick={() => { a.action(); setOpen(false); }}
+                  onClick={() => {
+                    a.action();
+                    setOpen(false);
+                  }}
                   onMouseEnter={() => setActiveIdx(i)}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-colors duration-100 ${
                     i === activeIdx ? "" : ""
                   }`}
                   style={{
-                    background: i === activeIdx ? "rgba(4,146,251,0.1)" : "transparent",
-                    color: i === activeIdx ? "var(--text-primary)" : "var(--text-secondary)",
+                    background:
+                      i === activeIdx ? "rgba(4,146,251,0.1)" : "transparent",
+                    color:
+                      i === activeIdx
+                        ? "var(--text-primary)"
+                        : "var(--text-secondary)",
                   }}
                 >
                   <span className="font-body text-sm flex-1">{a.label}</span>
-                  <span className="font-label text-[10px] uppercase tracking-[0.08em] shrink-0" style={{ color: "var(--text-muted)" }}>
+                  <span
+                    className="font-label text-[10px] uppercase tracking-[0.08em] shrink-0"
+                    style={{ color: "var(--text-muted)" }}
+                  >
                     {a.section}
                   </span>
-                  {i === activeIdx && <ArrowRight className="w-3.5 h-3.5 text-[#0492fb]" />}
+                  {i === activeIdx && (
+                    <ArrowRight className="w-3.5 h-3.5 text-[#0492fb]" />
+                  )}
                 </button>
               ))}
             </div>
 
             {/* Footer */}
-            <div className="flex items-center gap-4 px-5 py-3 border-t" style={{ borderColor: "var(--border-dim)" }}>
-              <span className="flex items-center gap-1.5 font-label text-[10px] uppercase tracking-[0.08em]" style={{ color: "var(--text-muted)" }}>
+            <div
+              className="flex items-center gap-4 px-5 py-3 border-t"
+              style={{ borderColor: "var(--border-dim)" }}
+            >
+              <span
+                className="flex items-center gap-1.5 font-label text-[10px] uppercase tracking-[0.08em]"
+                style={{ color: "var(--text-muted)" }}
+              >
                 <Command className="w-3 h-3" />K
                 <span style={{ color: "var(--text-muted)" }}>toggle</span>
               </span>
-              <span className="font-label text-[10px] uppercase tracking-[0.08em]" style={{ color: "var(--text-muted)" }}>
+              <span
+                className="font-label text-[10px] uppercase tracking-[0.08em]"
+                style={{ color: "var(--text-muted)" }}
+              >
                 ↑↓ navigate · ↵ select · esc close
               </span>
             </div>

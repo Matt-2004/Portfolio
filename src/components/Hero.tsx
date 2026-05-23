@@ -49,7 +49,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="font-mono font-bold ">Let's Connect</div>
+            <div className="font-mono font-bold ">Let&apos;s Connect</div>
             <div className="flex gap-2 justify-start">
               {socialLinks.map(({ name, href, icon: Icon }) => (
                 <a
@@ -106,7 +106,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            <p className="font-mono font-bold">HI, I'm WAI YAN AUNG</p>
+            <p className="font-mono font-bold">HI, I&lsquo;m WAI YAN AUNG</p>
             {t.hero.shortIntro}
           </motion.h3>
 
