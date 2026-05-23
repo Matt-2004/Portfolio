@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { ArrowDown, ArrowUpRight, Linkedin } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { useLanguage } from "../lib/LanguageContext";
+import Image from "next/image";
 
 const socialLinks = [
   { name: "GitHub", href: "https://github.com/Matt-2004", icon: SiGithub },
