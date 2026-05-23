@@ -1,62 +1,98 @@
 export const translations = {
   en: {
     hero: {
-      role: "Front-End Developer",
-      bio: "I build scalable and performant web applications focused on real-time systems, authentication flows, and clean UI architecture.",
-      viewResume: "View Resume",
+      role: "Full Stack Coder",
+      manifesto:
+        "I build scalable, production-grade frontend systems focused on performance, accessibility, and exceptional user experience.",
+      shortIntro:
+        "Frontend engineer specializing in React ecosystems, modern UI architecture, and performant web applications.",
+      viewResume: "Resume",
+      viewProjects: "View Projects",
+      hireMe: "Hire Me",
     },
     about: {
       title: "About",
-      p1: "I’m a second-year Computer Science student and Front-End Developer focused on building scalable, high-performance web applications. I specialize in Next.js and React, delivering clean, responsive, and user-centric interfaces.",
-      p2: "I don’t wait for experience — I build it. Through hands-on projects, I’ve strengthened my system thinking, and developed a strong engineering mindset. I’m driven to write clean, efficient code, contribute to impactful products, and grow into an engineer who delivers both technical excellence and real user value.",
-      readMore: "Read more",
-      showLess: "Show less",
+      p1: "I'm a frontend engineer specializing in production-grade TypeScript and React applications. I focus on scalable architecture, performance optimization, and building UI systems that hold up under real-world complexity — not just look good in demos.",
+      p2: "Currently pursuing a B.Sc. in Computer Science at Assumption University while shipping full-scale applications solo. I own projects end-to-end: from architecture decisions and data flow design to testing infrastructure and deployment pipelines. My approach prioritizes maintainability, type safety, and measurable performance — the kind of engineering that keeps systems stable as they grow.",
     },
     skills: {
-      title: "Skills",
+      title: "Technical Skills",
       categories: {
-        Frontend: "Frontend",
-        Backend: "Backend",
-        Database: "Database",
-        Tools: "Tools",
-        "CS Fundamentals": "CS Fundamentals",
-        Mobile: "Mobile",
+        "Languages & Frameworks": "Languages & Frameworks",
+        "Libraries & Tools": "Libraries & Tools",
+        "Testing & Quality": "Testing & Quality",
+        Infrastructure: "Infrastructure",
       },
     },
     github: {
       title: "GitHub Contributions",
     },
     projects: {
-      title: "Featured Projects",
+      title: "Engineering Work",
+      viewCaseStudy: "View Case Study",
+      viewLive: "Live",
+      viewSource: "Source",
       items: [
         {
           title: "GearUp",
           overview:
-            "Developed the frontend of a car marketplace platform with responsive UI, vehicle listing pages, and role-based dashboards. Integrated REST APIs for dynamic data rendering and implemented client-side authentication handling. Optimized large vehicle lists using TanStack Virtual, improving render speed by 40% and reducing DOM rendering overhead.",
+            "Production vehicle marketplace — 32K TypeScript LOC, role-based dashboards, real-time messaging, 300+ automated tests.",
         },
         {
           title: "MASMAX",
           overview:
-            "Developed a comprehensive movie browsing web application featuring secure user authentication with Supabase, personalized watchlists, and a highly responsive frontend architecture.",
+            "Full-stack movie platform — Supabase auth, AI recommendations, multi-theme system, code-split architecture.",
+        },
+        {
+          title: "ABACTutor",
+          overview:
+            "A bilingual peer tutoring platform connecting ABAC freshmen with verified senior tutors — breaking down barriers of cost, language, and trust.",
+        },
+      ],
+    },
+    caseStudy: {
+      caseStudy: "Case Study",
+      role: "Role & Ownership",
+      challenge: "Problem",
+      approach: "Technical Approach",
+      architecture: "Architecture",
+      technicalHighlights: "Technical Highlights",
+      metrics: "Metrics & Impact",
+      outcome: "Result",
+      liveSite: "Live Site",
+      sourceCode: "Source Code",
+      close: "Close",
+    },
+    engineering: {
+      title: "Engineering Principles",
+      principles: [
+        {
+          label: "Performance",
+          body: "Every component ships with a performance budget. Code splitting, virtualization, caching layers, and bundle analysis are defaults — not afterthoughts.",
+        },
+        {
+          label: "Type Safety",
+          body: "TypeScript strict mode, Zod runtime validation on API boundaries, and shared DTO types between services. The compiler catches what code review misses.",
+        },
+        {
+          label: "Testing",
+          body: "Unit tests for logic, integration tests for data flow, E2E tests for critical paths. Accessibility assertions in CI. Tests are documentation that doesn't rot.",
+        },
+        {
+          label: "Maintainability",
+          body: "Feature-based modular architecture, colocated concerns, explicit data flow patterns. A new team member should understand a feature by reading one directory.",
         },
       ],
     },
     contact: {
-      title: "Get In Touch",
-      desc: "I am currently looking for new opportunities. Whether you have a question, a project idea, or just want to say hi — my inbox is always open.",
-      name: "Name",
-      email: "Email",
-      message: "Message",
-      sendMsg: "Send Message",
-      sending: "Sending...",
-      sent: "Message Sent ✓",
-      successMsg: "✓ Thanks! I'll get back to you soon.",
-      errorMsg: "✕ Something went wrong. Please try again.",
+      title: "Contact",
+      cta: "Let's work together.",
+      sub: "I'm currently open to frontend engineering roles. Reach out if you're looking for someone who ships production-grade systems.",
     },
     nav: {
       home: "Home",
-      skills: "Skills",
-      projects: "Projects",
+      work: "Work",
+      about: "About",
       contact: "Contact",
     },
     footer: {
@@ -65,62 +101,98 @@ export const translations = {
   },
   zh: {
     hero: {
-      role: "前端开发工程师",
-      bio: "我致力于构建可扩展且高性能的Web应用程序，专注于实时系统、身份验证流程以及整洁的UI架构。",
-      viewResume: "查看简历",
+      role: "全栈工程师",
+      manifesto:
+        "我构建可扩展的生产级前端系统，专注于性能、可访问性和卓越的用户体验。",
+      shortIntro:
+        "专注于 React 生态系统、现代 UI 架构和高性能 Web 应用的前端工程师。",
+      viewResume: "简历",
+      viewProjects: "查看项目",
+      hireMe: "雇佣我",
     },
     about: {
       title: "关于我",
-      p1: "我是一名大二计算机科学学生兼前端开发者，专注于构建可扩展、高性能的 Web 应用。我专长于 Next.js 和 React，能够交付整洁、响应迅速且以用户为中心的界面。",
-      p2: "我不会等待经验——我会主动创造经验。通过亲手实践的项目，我强化了系统性思维，并培养了扎实的工程思维。我始终坚持编写整洁、高效的代码，致力于为有影响力的产品做出贡献，并成长为一名既追求技术卓越又创造真实用户价值的工程师。",
-      readMore: "阅读更多",
-      showLess: "收起",
+      p1: "我是一名专注于生产级 TypeScript 和 React 应用的前端工程师。专注于可扩展架构、性能优化，构建在真实复杂性下依然稳健的 UI 系统。",
+      p2: "目前在 Assumption University 攻读计算机科学学士学位，同时独立交付全栈应用。从架构决策、数据流设计到测试基础设施和部署流水线，我端到端地负责整个工程流程。",
     },
     skills: {
-      title: "技能",
+      title: "技术技能",
       categories: {
-        Frontend: "前端",
-        Backend: "后端",
-        Database: "数据库",
-        Tools: "工具",
-        "CS Fundamentals": "计算机基础",
-        Mobile: "移动端",
+        "Languages & Frameworks": "语言与框架",
+        "Libraries & Tools": "库与工具",
+        "Testing & Quality": "测试与质量",
+        Infrastructure: "基础设施",
       },
     },
     github: {
       title: "GitHub 贡献",
     },
     projects: {
-      title: "精选项目",
+      title: "工程项目",
+      viewCaseStudy: "查看案例分析",
+      viewLive: "预览",
+      viewSource: "源码",
       items: [
         {
           title: "GearUp",
           overview:
-            "开发汽车市场平台的前端部分，提供响应式UI、车辆列表页面和基于角色的仪表板。集成了 REST API 用于动态数据渲染，并实现了客户端身份验证处理。使用 TanStack Virtual 优化了大型车辆列表，将渲染速度提升了 40%，并减少了 DOM 渲染开销。",
+            "生产级汽车交易平台——32K TypeScript 代码，基于角色的仪表板，实时消息，300+ 自动化测试。",
         },
         {
           title: "MASMAX",
           overview:
-            "开发了一款全面的电影浏览 Web 应用，包含基于 Supabase 的安全用户身份验证、个性化待看清单以及高响应式的前端架构。",
+            "全栈电影平台——Supabase 认证，AI 推荐，多主题系统，代码分割架构。",
+        },
+        {
+          title: "ABACTutor",
+          overview:
+            "双语同伴辅导平台，连接 ABAC 新生与经过验证的学长导师——消除费用、语言和信任障碍。",
+        },
+      ],
+    },
+    caseStudy: {
+      caseStudy: "案例分析",
+      role: "角色与职责",
+      challenge: "问题",
+      approach: "技术方案",
+      architecture: "架构",
+      technicalHighlights: "技术亮点",
+      metrics: "指标与影响",
+      outcome: "成果",
+      liveSite: "在线预览",
+      sourceCode: "源代码",
+      close: "关闭",
+    },
+    engineering: {
+      title: "工程原则",
+      principles: [
+        {
+          label: "性能",
+          body: "每个组件都有性能预算。代码分割、虚拟化、缓存层和包分析是默认实践——而非事后补救。",
+        },
+        {
+          label: "类型安全",
+          body: "TypeScript 严格模式，Zod API 边界运行时验证，服务间共享 DTO 类型。编译器能发现代码审查遗漏的错误。",
+        },
+        {
+          label: "测试",
+          body: "逻辑用单元测试，数据流用集成测试，关键路径用 E2E 测试。CI 中强制执行无障碍断言。测试是不会过时的文档。",
+        },
+        {
+          label: "可维护性",
+          body: "基于功能的模块化架构，关注点就近放置，显式数据流模式。新成员通过一个目录就能理解整个功能。",
         },
       ],
     },
     contact: {
       title: "联系我",
-      desc: "我目前正在寻找新的工作机会。如果您有任何问题、项目想法，或者只是一句简单的问候，我都欢迎。我的收件箱始终为您敞开！",
-      name: "姓名",
-      email: "邮箱",
-      message: "留言",
-      sendMsg: "发送消息",
-      sending: "发送中...",
-      sent: "消息已发送 ✓",
-      successMsg: "✓ 谢谢！我会尽快回复您。",
-      errorMsg: "✕ 出了点问题，请重试。",
+      cta: "一起合作吧。",
+      sub: "我正在寻找前端工程岗位。如果您需要构建生产级系统的工程师，欢迎联系我。",
     },
     nav: {
       home: "主页",
-      skills: "技能",
-      projects: "项目",
+      work: "作品",
+      about: "关于",
       contact: "联系",
     },
     footer: {

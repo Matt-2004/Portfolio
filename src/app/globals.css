@@ -2,47 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Theme tokens ────────────────────────────────────────────── */
-:root,
-[data-theme="dark"] {
-  --bg: #050d1a;
-  --bg-panel: #050d1a;
-  --bg-section: rgba(255, 255, 255, 0.02);
-  --bg-section-hi: rgba(255, 255, 255, 0.03);
-  --border: rgba(255, 255, 255, 0.07);
-  --border-subtle: rgba(255, 255, 255, 0.05);
-  --text-primary: #ffffff;
-  --text-body: #9ca3af; /* gray-400 */
-  --text-muted: #6b7280; /* gray-500 */
-  --text-faint: #374151; /* gray-700 */
-  --nav-bg: rgba(5, 13, 26, 0.8);
-  --pill-bg: rgba(255, 255, 255, 0.05);
-  --pill-border: rgba(255, 255, 255, 0.1);
-  --pill-text: #9ca3af;
-  --input-border: rgba(255, 255, 255, 0.1);
-  --scrollbar-track: transparent;
+/* ─── Design tokens ──────────────────────────────────────────── */
+:root {
+  --bg-deep: #ffffff;
+  --bg-base: #ffffff;
+  --bg-elevated: #f5f5f5;
+  --bg-surface: #eeeeee;
+  --base: #ffffff;
+
+  --accent: #0369A1;
+  --accent-light: #0284C7;
+  --brand: #fc6903;
+  --brand-light: #fd8830;
+
+  --violet: #0369A1;
+  --lavender: #0284C7;
+  --orange: #fc6903;
+  --ember: #fd8830;
+  --cyan: #0369A1;
+  --ice: #0284C7;
+
+  --text-primary: #020617;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  --border-dim: rgba(0, 0, 0, 0.06);
+  --border-mid: rgba(0, 0, 0, 0.1);
+  --border-bright: rgba(0, 0, 0, 0.16);
+  --border-accent: rgba(3, 105, 161, 0.3);
+
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="light"] {
-  --bg: #f5f5f0;
-  --bg-panel: #f5f5f0;
-  --bg-section: rgba(0, 0, 0, 0.025);
-  --bg-section-hi: rgba(0, 0, 0, 0.04);
-  --border: rgba(0, 0, 0, 0.07);
-  --border-subtle: rgba(0, 0, 0, 0.05);
-  --text-primary: #0f172a;
-  --text-body: #475569; /* slate-600 */
-  --text-muted: #94a3b8; /* slate-400 */
-  --text-faint: #cbd5e1; /* slate-300 */
-  --nav-bg: rgba(245, 245, 240, 0.85);
-  --pill-bg: rgba(0, 0, 0, 0.04);
-  --pill-border: rgba(0, 0, 0, 0.1);
-  --pill-text: #475569;
-  --input-border: rgba(0, 0, 0, 0.12);
-  --scrollbar-track: transparent;
+/* ─── Film grain ─────────────────────────────────────────────── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
 }
 
-/* ─── Base ────────────────────────────────────────────────────── */
+/* ─── Base ───────────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -50,28 +56,111 @@ html {
 }
 
 body {
-  scroll-behavior: smooth;
   overflow-x: hidden;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  background-color: var(--bg);
+  background-color: var(--bg-base);
   color: var(--text-primary);
   transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+    background-color 0.5s ease,
+    color 0.5s ease;
 }
 
-/* ─── Custom scrollbar ────────────────────────────────────────── */
+::selection {
+  background: rgba(3, 105, 161, 0.25);
+  color: #f8fafc;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--scrollbar-track);
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #fc6736;
+  background: #0369A1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #e55620;
+  background: #0284C7;
+}
+
+/* ─── Glass nav ──────────────────────────────────────────────── */
+.glass {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: var(--glass-bg);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* ─── Surface classes (no gradients) ─────────────────────────── */
+.surface-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-dim);
+  border-radius: 16px;
+}
+
+.surface-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-dim);
+  border-radius: 16px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.surface-card:hover {
+  border-color: var(--border-bright);
+  box-shadow:
+    0 0 32px -4px rgba(4, 146, 251, 0.1),
+    0 16px 32px -12px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
+}
+
+.surface-elevated {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-mid);
+  border-radius: 16px;
+}
+
+/* ─── Section divider ────────────────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: var(--border-mid);
+}
+
+/* ─── Image frame ────────────────────────────────────────────── */
+.image-frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-dim);
+}
+
+/* ─── Focus ──────────────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid #0369A1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  body {
+    cursor: auto;
+  }
+  .cursor-dot,
+  .cursor-ring {
+    display: none !important;
+  }
 }

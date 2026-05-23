@@ -6,19 +6,15 @@ type Theme = "dark" | "light";
 const ThemeContext = createContext<{
   theme: Theme;
   toggle: () => void;
-}>({ theme: "dark", toggle: () => {} });
+}>({ theme: "light", toggle: () => {} });
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>("light");
 
   // On mount, read saved preference or system preference
   useEffect(() => {
     const saved = localStorage.getItem("theme") as Theme | null;
-    const preferred =
-      saved ??
-      (window.matchMedia("(prefers-color-scheme: light)").matches
-        ? "light"
-        : "dark");
+    const preferred = saved ?? "light";
     setTheme(preferred);
     document.documentElement.setAttribute("data-theme", preferred);
   }, []);
@@ -26,11 +22,15 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const toggle = () => {
     setTheme((prev) => {
       const next = prev === "dark" ? "light" : "dark";
-      localStorage.setItem("theme", next);
-      document.documentElement.setAttribute("data-theme", next);
       return next;
     });
   };
+
+  // Sync data-theme attribute whenever theme changes
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggle }}>

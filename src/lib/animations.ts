@@ -1,37 +1,86 @@
-/* ─── Shared Framer Motion variants ──────────────────────────── */
+import type { Variants, Transition } from "framer-motion";
 
-export const fadeInUp = {
-  hidden: { opacity: 0, y: 32 },
+/* ─── Easing curves ─────────────────────────────────────────── */
+export const easeOutQuart = [0.25, 1, 0.5, 1] as const;
+export const easeInOutExpo = [0.87, 0, 0.13, 1] as const;
+export const easeOutExpo = [0.16, 1, 0.3, 1] as const;
+
+/* ─── Shared transitions ────────────────────────────────────── */
+export const springSnappy: Transition = {
+  type: "spring",
+  stiffness: 400,
+  damping: 30,
+};
+
+export const fadeLift: Variants = {
+  hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
   },
 };
 
-export const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number = 0) => ({
+/* ─── Stagger container for children ────────────────────────── */
+export const staggerContainer = (staggerMs = 80): Variants => ({
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: staggerMs / 1000,
+      delayChildren: 0.15,
+    },
+  },
+});
+
+/* ─── Individual child fade+lift ────────────────────────────── */
+export const fadeLiftChild: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+  },
+};
+
+/* ─── Split-text character stagger ──────────────────────────── */
+export const charReveal: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      delay: i * 0.15,
-      ease: [0.22, 1, 0.36, 1] as const,
+      duration: 0.45,
+      delay: i * 0.03,
+      ease: easeOutQuart,
     },
   }),
 };
 
-export const staggerContainer = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
+/* ─── Clip-path wipe transition ─────────────────────────────── */
+export const clipWipe: Variants = {
+  hidden: { clipPath: "inset(0 100% 0 0)" },
+  visible: {
+    clipPath: "inset(0 0% 0 0)",
+    transition: { duration: 0.8, ease: easeInOutExpo },
+  },
 };
 
-export const springPill = {
+/* ─── Spring pill tag ─────────────────────────────────────── */
+export const springPill: Variants = {
   hidden: { opacity: 0, y: 8 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring" as const, stiffness: 280, damping: 22 },
+    transition: { type: "spring", stiffness: 280, damping: 22 },
+  },
+};
+
+/* ─── Page section fade in ──────────────────────────────────── */
+export const sectionReveal: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.4, 0, 0.2, 1] },
   },
 };

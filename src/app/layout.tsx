@@ -1,35 +1,43 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/context/ThemeContext";
+import { Syne, DM_Sans } from "next/font/google";
 import { LanguageProvider } from "@/lib/LanguageContext";
-import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import "./globals.css";
 
-const inter = Inter({
+const syne = Syne({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-syne",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Wai Yan Aung | Full-Stack Developer",
+  title: "Wai Yan Aung | Front-End Engineer",
   description:
-    "Portfolio of Wai Yan Aung, a Full-Stack Developer specializing in Next.js, React, and Node.js. View my latest projects and skills.",
+    "Portfolio of Wai Yan Aung — building performant, design-driven web experiences with Next.js, React, and TypeScript.",
   keywords: [
     "Wai Yan Aung",
     "Portfolio",
-    "Full-Stack Developer",
+    "Front-End Engineer",
     "Next.js",
     "React",
-    "Node.js",
+    "TypeScript",
   ],
   authors: [{ name: "Wai Yan Aung" }],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://your-portfolio-url.com", // You can replace this later
-    title: "Wai Yan Aung | Full-Stack Developer",
+    url: "https://your-portfolio-url.com",
+    title: "Wai Yan Aung | Front-End Engineer",
     description:
-      "Portfolio of Wai Yan Aung, a Full-Stack Developer specializing in Next.js, React, and Node.js. View my latest projects.",
+      "Portfolio of Wai Yan Aung — building performant, design-driven web experiences.",
     siteName: "Wai Yan Aung Portfolio",
   },
   icons: {
@@ -43,12 +51,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body suppressHydrationWarning className={inter.className}>
+    <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
+      <body suppressHydrationWarning className="font-body">
         <Analytics />
-        <ThemeProvider>
-          <LanguageProvider>{children}</LanguageProvider>
-        </ThemeProvider>
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

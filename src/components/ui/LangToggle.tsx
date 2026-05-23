@@ -1,7 +1,5 @@
 "use client";
-
 import { useLanguage } from "@/lib/LanguageContext";
-import { Languages } from "lucide-react";
 import { motion } from "framer-motion";
 
 const LangToggle = () => {
@@ -9,16 +7,14 @@ const LangToggle = () => {
 
   return (
     <motion.button
-      whileHover={{ scale: 1.05 }}
+      whileHover={{ scale: 1.08 }}
       whileTap={{ scale: 0.95 }}
       onClick={toggleLanguage}
-      className="flex items-center justify-center p-2.5 rounded-full border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm hover:shadow-md transition-all duration-300 group"
+      className="flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-full border border-black/20 text-black/60 text-xs font-bold uppercase tracking-wider transition-all duration-200 hover:text-black hover:border-black/40"
       aria-label="Toggle language"
+      data-cursor-hover
     >
-      <Languages className="w-5 h-5 text-gray-700 dark:text-gray-300 group-hover:text-[#FC6736] transition-colors" />
-      <span className="ml-1.5 text-xs font-bold uppercase text-gray-700 dark:text-gray-300">
-        {language === "en" ? "EN" : "中"}
-      </span>
+      {language === "en" ? "EN" : "中"}
     </motion.button>
   );
 };

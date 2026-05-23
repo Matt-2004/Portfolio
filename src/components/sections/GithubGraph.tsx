@@ -2,7 +2,6 @@
 import { GitHubCalendar } from "react-github-calendar";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import Title from "@/components/ui/Title";
 import { useLanguage } from "@/lib/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 
@@ -121,10 +120,21 @@ export default function GithubGraph() {
   if (!mounted) {
     return (
       <motion.section
-        className="py-16 border-b"
+        className="py-16 "
         style={{ borderColor: "var(--border-subtle)" }}
       >
-        <Title text={t.github.title} />
+        <div className="flex items-center gap-6 mb-8">
+          <span
+            className="font-label text-label uppercase tracking-[0.12em]"
+            style={{ color: "var(--text-muted)" }}
+          >
+            {t.github.title}
+          </span>
+          <div
+            className="flex-1 h-px"
+            style={{ background: "var(--border-dim)" }}
+          />
+        </div>
         <div className="w-full h-[180px] p-6 rounded-2xl bg-[var(--bg-section-hi)] border border-[var(--border)] animate-pulse" />
       </motion.section>
     );
@@ -132,14 +142,25 @@ export default function GithubGraph() {
 
   return (
     <motion.section
-      className="py-16 border-b"
+      className="py-16 "
       style={{ borderColor: "var(--border-subtle)" }}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
     >
-      <Title text={t.github.title} />
+      <div className="flex items-center gap-6 mb-8">
+        <span
+          className="font-label text-label uppercase tracking-[0.12em]"
+          style={{ color: "var(--text-muted)" }}
+        >
+          {t.github.title}
+        </span>
+        <div
+          className="flex-1 h-px"
+          style={{ background: "var(--border-dim)" }}
+        />
+      </div>
       <div className="mb-3 px-1">
         <p
           className="text-sm font-semibold"
