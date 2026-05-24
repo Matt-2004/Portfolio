@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { charReveal } from "@/lib/animations";
+import { charReveal } from "../../lib/animations";
 
 interface SplitTextProps {
   text: string;
@@ -36,7 +36,7 @@ export default function SplitText({
           >
             {char}
           </motion.span>
-        )
+        ),
       )}
     </Tag>
   );

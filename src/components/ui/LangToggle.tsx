@@ -1,6 +1,7 @@
 "use client";
-import { useLanguage } from "@/lib/LanguageContext";
+
 import { motion } from "framer-motion";
+import { useLanguage } from "../../lib/LanguageContext";
 
 const LangToggle = () => {
   const { language, toggleLanguage } = useLanguage();
