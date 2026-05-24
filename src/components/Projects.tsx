@@ -2,9 +2,9 @@
 import { useState, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Eye, Github, ArrowUpRight } from "lucide-react";
+import { Eye, ArrowUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { SiFigma } from "react-icons/si";
+import { SiFigma, SiGithub } from "react-icons/si";
 import { IProject, techColors, projects } from "../lib/data";
 import { useLanguage } from "../lib/LanguageContext";
 import CaseStudyModal from "./ui/CaseStudyModal";
@@ -215,7 +215,7 @@ const ProjectRow = ({ onOpen, ...p }: ProjectRowProps) => {
                   }}
                   data-cursor-hover
                 >
-                  <Github className="w-4 h-4" />
+                  <SiGithub className="w-4 h-4" />
                 </a>
               )}
               {p.figmaUrl !== undefined && (

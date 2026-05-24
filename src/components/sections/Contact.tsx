@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { SiGithub } from "react-icons/si";
+import { FaLinkedinIn } from "react-icons/fa6";
 import { useLanguage } from "../../lib/LanguageContext";
 import ScrollReveal from "../ui/ScrollReveal";
 
@@ -68,12 +70,12 @@ const Contact = () => {
               {
                 name: "GitHub",
                 href: "https://github.com/Matt-2004",
-                icon: Github,
+                icon: SiGithub,
               },
               {
                 name: "LinkedIn",
                 href: "https://www.linkedin.com/in/mas200418/",
-                icon: Linkedin,
+                icon: FaLinkedinIn,
               },
               {
                 name: "Email",

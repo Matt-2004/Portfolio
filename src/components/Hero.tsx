@@ -1,7 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Linkedin } from "lucide-react";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { SiGithub } from "react-icons/si";
+import { FaLinkedinIn } from "react-icons/fa6";
 import { useLanguage } from "../lib/LanguageContext";
 import Image from "next/image";
 
@@ -10,7 +11,7 @@ const socialLinks = [
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/mas200418/",
-    icon: Linkedin,
+    icon: FaLinkedinIn,
   },
 ];
 
