@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "../../lib/LanguageContext";
 import LangToggle from "./LangToggle";
 
-const sections = ["work", "about", "contact"] as const;
+const sections = ["about", "work", "contact"] as const;
 
 const Navbar = () => {
   const { t } = useLanguage();
@@ -48,7 +48,9 @@ const Navbar = () => {
         background: scrolled ? "rgba(255,255,255,0.92)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(0,0,0,0.06)" : "1px solid transparent",
+        borderBottom: scrolled
+          ? "1px solid rgba(0,0,0,0.06)"
+          : "1px solid transparent",
       }}
       initial={{ y: -80 }}
       animate={{ y: 0 }}
@@ -94,8 +96,14 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile bottom nav */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-[1000] safe-area-bottom"
-        style={{ background: "rgba(255,255,255,0.95)", backdropFilter: "blur(20px)", borderTop: "1px solid rgba(0,0,0,0.08)" }}>
+      <div
+        className="md:hidden fixed bottom-0 left-0 right-0 z-[1000] safe-area-bottom"
+        style={{
+          background: "rgba(255,255,255,0.95)",
+          backdropFilter: "blur(20px)",
+          borderTop: "1px solid rgba(0,0,0,0.08)",
+        }}
+      >
         <div className="flex justify-around py-2.5">
           {sections.map((id) => (
             <button

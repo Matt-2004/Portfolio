@@ -102,7 +102,7 @@ export default function Hero() {
         <div className="flex items-end justify-between pb-10 md:pb-14">
           {/* Intro text */}
           <motion.h3
-            className="max-w-sm text-sm md:text-base leading-relaxed font-medium text-black/70"
+            className="max-w-sm font-mono leading-relaxed font-medium text-black"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
