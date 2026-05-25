@@ -204,7 +204,9 @@ export default function CommandPalette() {
                         : "var(--text-secondary)",
                   }}
                 >
-                  <span className="font-body text-sm flex-1">{a.label}</span>
+                  <span className="font-body text-sm flex-1">
+                    {a.label}
+                  </span>
                   <span
                     className="font-label text-[10px] uppercase tracking-[0.08em] shrink-0"
                     style={{ color: "var(--text-muted)" }}

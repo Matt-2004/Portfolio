@@ -145,13 +145,21 @@ const ProjectRow = ({ onOpen, ...p }: ProjectRowProps) => {
               <div className="h-px w-8 bg-[#fc6903]/40" />
             </div>
 
-            {/* Title */}
-            <h3
-              className="font-display text-[clamp(28px,4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.02em]"
-              style={{ color: "var(--text-primary)" }}
-            >
-              {p.title}
-            </h3>
+            {/* Title or Logo */}
+            {p.logo ? (
+              <img
+                src={p.logo}
+                alt={p.title}
+                className="h-10 md:h-12 w-auto object-contain object-left"
+              />
+            ) : (
+              <h3
+                className="font-display text-[clamp(28px,4vw,40px)] font-extrabold leading-[1.05] tracking-[-0.02em]"
+                style={{ color: "var(--text-primary)" }}
+              >
+                {p.title}
+              </h3>
+            )}
 
             {/* Key metric callout */}
             {p.caseStudy.metrics[0] && (
@@ -264,10 +272,7 @@ const Projects = () => {
 
   return (
     <>
-      <section
-        id="work"
-        className="relative py-24 md:py-32 px-6 md:px-8"
-      >
+      <section id="work" className="relative py-24 md:py-32 px-6 md:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section heading */}
           <ScrollReveal>
@@ -278,7 +283,10 @@ const Projects = () => {
               >
                 {t.projects.title}
               </span>
-              <div className="flex-1 h-px" style={{ background: "#fc6903", opacity: 0.3 }} />
+              <div
+                className="flex-1 h-px"
+                style={{ background: "#fc6903", opacity: 0.3 }}
+              />
               <span
                 className="font-label text-label uppercase tracking-[0.12em] shrink-0"
                 style={{ color: "var(--text-muted)" }}
@@ -304,7 +312,6 @@ const Projects = () => {
               );
             })}
           </div>
-
         </div>
       </section>
 

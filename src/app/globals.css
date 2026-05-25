@@ -3,27 +3,29 @@
 /* ─── Theme ──────────────────────────────────────────────────── */
 @theme {
   /* Colors */
-  --color-accent: #0369A1;
-  --color-accent-light: #0284C7;
-  --color-brand: #fc6903;
+  --color-accent: #ffe596;
+  --color-accent-light: #0284c7;
+  --color-brand: #5c2600;
   --color-brand-light: #fd8830;
-  --color-violet: #0369A1;
-  --color-violet-light: #0284C7;
+  --color-violet: #0369a1;
+  --color-violet-light: #0284c7;
   --color-orange: #fc6903;
   --color-orange-light: #fd8830;
-  --color-cyan: #0369A1;
-  --color-cyan-light: #0284C7;
+  --color-cyan: #0369a1;
+  --color-cyan-light: #0284c7;
   --color-cream: #020617;
   --color-cream-muted: #475569;
-  --color-base-deep: #FFFFFF;
-  --color-base: #FFFFFF;
-  --color-base-elevated: #F5F5F5;
-  --color-base-surface: #EEEEEE;
+  --color-base-deep: #ffffff;
+  --color-base: #ffffff;
+  --color-base-elevated: #f5f5f5;
+  --color-base-surface: #eeeeee;
 
   /* Font families */
-  --font-display: var(--font-syne), sans-serif;
+  --font-merriweather: var(--font-merriweather), serif;
   --font-body: var(--font-dm-sans), sans-serif;
+  --font-display: var(--font-raleway), sans-serif;
   --font-label: var(--font-syne), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   /* Font sizes */
   --text-hero: 96px;
@@ -50,17 +52,17 @@
   --bg-surface: #eeeeee;
   --base: #ffffff;
 
-  --accent: #0369A1;
-  --accent-light: #0284C7;
-  --brand: #fc6903;
+  --accent: #ffe596;
+  --accent-light: #0284c7;
+  --brand: #5c2600;
   --brand-light: #fd8830;
 
-  --violet: #0369A1;
-  --lavender: #0284C7;
+  --violet: #0369a1;
+  --lavender: #0284c7;
   --orange: #fc6903;
   --ember: #fd8830;
-  --cyan: #0369A1;
-  --ice: #0284C7;
+  --cyan: #0369a1;
+  --ice: #0284c7;
 
   --text-primary: #020617;
   --text-secondary: #475569;
@@ -119,11 +121,11 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0369A1;
+  background: #0369a1;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0284C7;
+  background: #0284c7;
 }
 
 /* ─── Glass nav ──────────────────────────────────────────────── */
@@ -181,7 +183,7 @@ body {
 
 /* ─── Focus ──────────────────────────────────────────────────── */
 *:focus-visible {
-  outline: 2px solid #0369A1;
+  outline: 2px solid #0369a1;
   outline-offset: 2px;
   border-radius: 4px;
 }

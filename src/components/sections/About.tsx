@@ -1,176 +1,155 @@
 "use client";
 import { motion } from "framer-motion";
-import {
-  SiTypescript,
-  SiJavascript,
-  SiHtml5,
-  SiCss,
-  SiReact,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiExpress,
-  SiTailwindcss,
-  SiReactquery,
-  SiAxios,
-  SiZod,
-  SiReacthookform,
-  SiReactrouter,
-  SiRedux,
-  SiCloudinary,
-  SiSupabase,
-  SiJest,
-  SiGithubactions,
-  SiDocker,
-  SiVercel,
-  SiGit,
-  SiPostgresql,
-} from "react-icons/si";
-import { FlaskConical, Radio, Gauge, Globe } from "lucide-react";
-import { staggerContainer, springPill } from "../../lib/animations";
-import { skillItems } from "../../lib/data";
 import { useLanguage } from "../../lib/LanguageContext";
 import ScrollReveal from "../ui/ScrollReveal";
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  typescript: SiTypescript,
-  javascript: SiJavascript,
-  html5: SiHtml5,
-  css3: SiCss,
-  react: SiReact,
-  nextjs: SiNextdotjs,
-  nodejs: SiNodedotjs,
-  express: SiExpress,
-  tailwind: SiTailwindcss,
-  reactquery: SiReactquery,
-  axios: SiAxios,
-  zod: SiZod,
-  reacthookform: SiReacthookform,
-  reactrouter: SiReactrouter,
-  redux: SiRedux,
-  cloudinary: SiCloudinary,
-  supabase: SiSupabase,
-  jest: SiJest,
-  playwright: FlaskConical,
-  jestaxe: Gauge,
-  lighthouse: Globe,
-  docker: SiDocker,
-  vercel: SiVercel,
-  githubactions: SiGithubactions,
-  git: SiGit,
-  postgresql: SiPostgresql,
-  restapi: Radio,
-  signalr: Radio,
-};
-
-const catOrder = [
-  "Languages & Frameworks",
-  "Libraries & Tools",
-  "Testing & Quality",
-  "Infrastructure",
-] as const;
 
 export default function About() {
   const { t } = useLanguage();
 
-  const grouped = catOrder.map((cat) => ({
-    cat,
-    items: skillItems.filter((s) => s.cat === cat),
-  }));
-
   return (
     <section
       id="about"
-      className="py-24 md:py-32 px-6 md:px-8"
-      style={{ backgroundColor: "#fc6903" }}
+      className="relative bg-brand overflow-hidden py-24 md:py-32 px-6 md:px-8"
     >
-      <div className="max-w-4xl mx-auto">
-        {/* Heading */}
-        <ScrollReveal>
-          <h2 className="font-display text-[clamp(40px,6vw,64px)] font-extrabold leading-[0.95] tracking-[-0.02em] text-black mb-6">
-            {t.about.title}
-          </h2>
-        </ScrollReveal>
+      {/* ── Decorative rings — echo of hero portrait rings ── */}
+      {/* Large ring — off-right, slow CW */}
+      <motion.div
+        className="absolute top-1/2 right-0 w-[600px] h-[600px] md:w-[800px] md:h-[800px] rounded-full border border-white/[0.04] pointer-events-none"
+        style={{ transform: "translate(40%, -50%)" }}
+        animate={{ rotate: 360 }}
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+      />
 
-        {/* Stats + Bio — side by side on desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16 mb-20">
-          {/* Stats column */}
-          <ScrollReveal className="lg:col-span-2">
-            <div className="space-y-4">
-              {[
-                { value: "32K", label: "TypeScript LOC", dominant: true },
-                { value: "300+", label: "Automated Tests", dominant: false },
-                { value: "100", label: "Lighthouse Score", dominant: false },
-              ].map((s) => (
-                <div key={s.label} className="flex items-baseline gap-3">
-                  <span
-                    className={`font-display font-extrabold tracking-[-0.02em] text-black ${s.dominant ? "text-5xl" : "text-2xl opacity-60"}`}
-                  >
-                    {s.value}
-                  </span>
-                  <span
-                    className={`font-label uppercase tracking-[0.08em] ${s.dominant ? "text-xs text-black/60" : "text-[10px] text-black/40"}`}
-                  >
-                    {s.label}
-                  </span>
-                </div>
-              ))}
+      {/* Mid ring — counter-rotating */}
+      <motion.div
+        className="absolute top-1/3 left-0 w-[400px] h-[400px] md:w-[500px] md:h-[500px] rounded-full border border-white/[0.05] pointer-events-none"
+        style={{ transform: "translate(-30%, 0)" }}
+        animate={{ rotate: -360 }}
+        transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+      />
+
+      {/* Soft radial glow behind content */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 50% 60% at 50% 40%, rgba(252,105,3,0.06) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* ── Content ── */}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Section heading area */}
+        <div className="mb-20 md:mb-28">
+          <ScrollReveal>
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-px w-8 bg-[#fc6903]/50" />
+              <span className="font-label text-[10px] uppercase tracking-[0.15em] text-white shadow-2xl">
+                {t.about.title}
+              </span>
             </div>
           </ScrollReveal>
 
-          {/* Bio column */}
-          <div className="lg:col-span-3 space-y-4">
+          <ScrollReveal>
+            <h2 className="font-display text-[clamp(44px,7vw,80px)] font-extrabold leading-[0.92] tracking-[-0.02em] text-accent max-w-3xl">
+              {t.about.headline}
+            </h2>
+          </ScrollReveal>
+        </div>
+
+        {/* ── Two-column grid ── */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20">
+          {/* Left column — intro + what I build */}
+          <div className="md:col-span-7">
             <ScrollReveal>
-              <p className="font-body text-base leading-relaxed text-black/70">
-                {t.about.p1}
+              <p className="font-body text-lg md:text-xl leading-relaxed text-white/90 max-w-xl">
+                {t.about.intro}
               </p>
             </ScrollReveal>
-            <ScrollReveal>
-              <p className="font-body text-base leading-relaxed text-black/70">
-                {t.about.p2}
-              </p>
-            </ScrollReveal>
+
+            {/* What I enjoy building */}
+            <div className="mt-16 md:mt-20">
+              <ScrollReveal>
+                <h3 className="font-label text-[10px] uppercase tracking-[0.15em] text-[#fc6903] mb-5">
+                  {t.about.whatIBuild.label}
+                </h3>
+              </ScrollReveal>
+              <ul className="space-y-4">
+                {t.about.whatIBuild.items.map((item, i) => (
+                  <ScrollReveal key={i}>
+                    <li className="flex items-start gap-3 group">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#fc6903]/50 shrink-0 transition-all duration-300 group-hover:bg-[#fc6903] group-hover:scale-150" />
+                      <span className="font-body md:text-lg text-white/80 leading-relaxed transition-colors duration-300 group-hover:text-white/70">
+                        {item}
+                      </span>
+                    </li>
+                  </ScrollReveal>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Right column — stats + values */}
+          <div className="md:col-span-5">
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-x-6 gap-y-10 mb-16">
+              {t.about.stats.map((stat, i) => (
+                <ScrollReveal key={i}>
+                  <div>
+                    <motion.div
+                      className="font-display text-[clamp(36px,5vw,56px)] font-extrabold leading-none text-accent mb-2"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 25,
+                      }}
+                    >
+                      {stat.value}
+                    </motion.div>
+                    <div className="font-label text-[10px] uppercase tracking-[0.12em] text-white/90 leading-tight max-w-[120px]">
+                      {stat.label}
+                    </div>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+
+            {/* Values */}
+            <div className="space-y-6">
+              {t.about.values.map((v, i) => (
+                <ScrollReveal key={i}>
+                  <div className="group">
+                    <div className="flex items-center gap-2.5 mb-1.5">
+                      <span className="w-4 h-px bg-[#fc6903]/40 transition-all duration-300 group-hover:w-6 group-hover:bg-[#fc6903]/70" />
+                      <span className="font-label  font-semibold text-accent transition-colors duration-300 group-hover:text-white">
+                        {v.label}
+                      </span>
+                    </div>
+                    <p className="font-body text-sm text-white/90 leading-relaxed pl-6.5 transition-colors duration-300 group-hover:text-white/55">
+                      {v.description}
+                    </p>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Skills */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-          {grouped.map(({ cat, items }) =>
-            items.length === 0 ? null : (
-              <ScrollReveal key={cat}>
-                <div>
-                  <h3 className="font-label text-[11px] uppercase tracking-[0.15em] text-black mb-4">
-                    {t.skills.categories[
-                      cat as keyof typeof t.skills.categories
-                    ] || cat}
-                  </h3>
-                  <motion.div
-                    className="flex flex-wrap gap-2"
-                    variants={staggerContainer(40)}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                  >
-                    {items.map(({ label, iconKey }) => {
-                      const Icon = iconMap[iconKey];
-                      return (
-                        <motion.span
-                          key={label}
-                          variants={springPill}
-                          whileHover={{ y: -2, scale: 1.05 }}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border cursor-default transition-all duration-200 bg-black/10 text-black border-black/20"
-                          data-cursor-hover
-                        >
-                          {Icon && <Icon className="w-3.5 h-3.5 shrink-0" />}
-                          {label}
-                        </motion.span>
-                      );
-                    })}
-                  </motion.div>
-                </div>
-              </ScrollReveal>
-            ),
-          )}
-        </div>
+        {/* ── Availability callout ── */}
+        <ScrollReveal>
+          <div className="mt-24 md:mt-32 pt-10 border-t border-white/[0.06]">
+            <div className="flex items-center gap-3">
+              <span className="relative flex h-2.5 w-2.5 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#fc6903] opacity-70" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#fc6903]" />
+              </span>
+              <p className="font-body text-sm md:text-base text-white/45 leading-relaxed">
+                {t.about.availability}
+              </p>
+            </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );

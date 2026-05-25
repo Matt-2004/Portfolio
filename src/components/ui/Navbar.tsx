@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "../../lib/LanguageContext";
 import LangToggle from "./LangToggle";
+import { clsx } from "clsx";
 
 const sections = ["about", "work", "contact"] as const;
 
@@ -45,6 +46,7 @@ const Navbar = () => {
     <motion.header
       className="fixed top-0 left-0 right-0 z-[1000] transition-all duration-300"
       style={{
+        color: scrolled ? "black" : "white",
         background: scrolled ? "rgba(255,255,255,0.92)" : "transparent",
         backdropFilter: scrolled ? "blur(12px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
@@ -59,7 +61,8 @@ const Navbar = () => {
       <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-8 py-4">
         <button
           onClick={() => scrollTo("hero")}
-          className="font-display text-2xl font-extrabold tracking-[-0.03em] text-black hover:opacity-70 transition-opacity duration-200"
+          className="font-display text-2xl font-extrabold tracking-[-0.03em] hover:opacity-70 transition-opacity duration-200"
+          style={{ color: scrolled ? "#000" : "#fff" }}
         >
           W
         </button>
@@ -71,27 +74,46 @@ const Navbar = () => {
               <button
                 key={id}
                 onClick={() => scrollTo(id)}
-                className="relative font-label text-label uppercase transition-colors duration-200 py-1 text-black/80 hover:text-black"
+                className={clsx(
+                  "relative font-label text-label uppercase transition-colors duration-200 py-1",
+                  active === id && "text-brand-light font-semibold",
+                )}
+                style={
+                  active === id
+                    ? undefined
+                    : {
+                        color: scrolled
+                          ? "rgba(0,0,0,0.8)"
+                          : "rgba(255,255,255,0.85)",
+                      }
+                }
+                onMouseEnter={(e) => {
+                  if (active !== id) {
+                    (e.target as HTMLElement).style.color = scrolled
+                      ? "#000"
+                      : "#fff";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (active !== id) {
+                    (e.target as HTMLElement).style.color = scrolled
+                      ? "rgba(0,0,0,0.8)"
+                      : "rgba(255,255,255,0.85)";
+                  }
+                }}
               >
                 {t.nav[id]}
-                {active === id && (
-                  <motion.div
-                    layoutId="nav-active"
-                    className="absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full bg-black"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
               </button>
             ))}
           </div>
           <div className="flex items-center gap-3">
-            <LangToggle />
+            <LangToggle scrolled={scrolled} />
           </div>
         </div>
 
         {/* Mobile nav */}
         <div className="flex md:hidden items-center gap-3">
-          <LangToggle />
+          <LangToggle scrolled={scrolled} />
         </div>
       </nav>
 

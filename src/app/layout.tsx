@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Syne, DM_Sans } from "next/font/google";
-import { LanguageProvider } from "@/lib/LanguageContext";
+import { Syne, DM_Sans, Raleway, Merriweather, JetBrains_Mono } from "next/font/google";
+
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { LanguageProvider } from "../lib/LanguageContext";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -11,10 +12,31 @@ const syne = Syne({
   display: "swap",
 });
 
+const merriweather = Merriweather({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-merriweather",
+  display: "swap",
+});
+
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
   variable: "--font-dm-sans",
+  display: "swap",
+});
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-raleway",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 
@@ -51,7 +73,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
+    <html
+      lang="en"
+      className={`${syne.variable} ${dmSans.variable} ${raleway.variable} ${merriweather.variable} ${jetbrainsMono.variable}`}
+    >
       <body suppressHydrationWarning className="font-body">
         <Analytics />
         <LanguageProvider>{children}</LanguageProvider>

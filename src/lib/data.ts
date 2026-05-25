@@ -2,6 +2,7 @@
 
 export interface IProject {
   image: string;
+  logo?: string;
   title: string;
   overview: string;
   techStack: string[];
@@ -22,7 +23,8 @@ export interface IProject {
 
 export const projects: IProject[] = [
   {
-    image: "/gearup-v3.png",
+    image: "/projects/gearup-v3.png",
+    logo: "/logo/gearup-logo.png",
     title: "GearUp",
     url: "https://gear-up-opal.vercel.app/",
     githubUrl: "https://github.com/Matt-2004/Gear_Up",
@@ -78,7 +80,8 @@ export const projects: IProject[] = [
     },
   },
   {
-    image: "/masmax-v3.png",
+    image: "/projects/masmax-v3.png",
+    logo: "/logo/masmax-logo.png",
     title: "MASMAX",
     url: "https://masmax.vercel.app/",
     githubUrl: "https://github.com/Matt-2004/masmax",

@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, MapPin, Sparkles } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa6";
 import { useLanguage } from "../lib/LanguageContext";
@@ -21,19 +21,26 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100dvh] overflow-hidden"
-      style={{ backgroundColor: "#fc6903" }}
+      className="relative text-white bg-brand min-h-dvh overflow-hidden"
     >
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 min-h-[100dvh] flex flex-col">
+      {/* Ambient soft radial highlight behind portrait */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 50% at 50% 42%, rgba(255,255,255,0.07) 0%, transparent 60%)",
+        }}
+      />
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 min-h-dvh flex flex-col">
         {/* ── Top row: headline left / social right ── */}
-        <div className="flex items-start justify-between pt-28 md:pt-36">
-          {/* Headline — brutalist, oversized */}
+        <div className="flex items-start justify-between pt-24 md:pt-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="font-display text-[clamp(52px,10vw,80px)] font-extrabold leading-[0.82] tracking-[-0.03em] text-black uppercase">
+            <h1 className="font-display text-accent text-[clamp(52px,10vw,80px)] font-extrabold leading-[0.95] tracking-wide uppercase">
               {t.hero.role.split(" ").map((word, i, arr) => (
                 <span key={i} className={i < arr.length - 1 ? "block" : ""}>
                   {word}
@@ -43,15 +50,17 @@ export default function Hero() {
             </h1>
           </motion.div>
 
-          {/* Social — floating top-right */}
+          {/* Social links */}
           <motion.div
-            className="flex flex-col items-center gap-2 shrink-0 ml-8"
+            className="flex flex-col items-center gap-3 shrink-0 ml-8"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <div className="font-mono font-bold ">Let&apos;s Connect</div>
-            <div className="flex gap-2 justify-start">
+            <span className="font-label text-[10px] uppercase tracking-[0.15em] text-white/75">
+              Connect
+            </span>
+            <div className="flex gap-1.5">
               {socialLinks.map(({ name, href, icon: Icon }) => (
                 <a
                   key={name}
@@ -59,59 +68,93 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={name}
-                  className="w-11 h-11 flex items-center justify-center rounded-full border border-black/40 text-black hover:bg-black hover:text-white transition-all duration-200"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/65 hover:text-white hover:bg-white/10 hover:border-white/30 transition-all duration-300"
                 >
-                  <Icon className="w-5 h-5" />
+                  <Icon className="w-4 h-4" />
                 </a>
               ))}
             </div>
           </motion.div>
         </div>
 
-        {/* ── Middle: Portrait centered with blue ring accent ── */}
+        {/* ── Middle: Portrait with refined animated rings ── */}
         <motion.div
-          className="flex-1 flex items-center justify-center"
-          initial={{ scale: 0.88, opacity: 0 }}
+          className="flex-1 flex items-center justify-center -mt-6 md:-mt-10"
+          initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.25 }}
         >
           <div className="relative">
-            {/* Geometric blue ring */}
-            <div className="absolute -inset-8 md:-inset-12 rounded-full border-[3px] border-[#0369A1]/40" />
-            <div className="absolute -inset-2 md:-inset-4 rounded-full border border-[#0369A1]/25" />
+            {/* Soft radial glow behind portrait */}
+            <div
+              className="absolute -inset-16 md:-inset-24 rounded-full blur-3xl"
+              style={{
+                background:
+                  "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 50%, transparent 70%)",
+              }}
+            />
 
-            {/* Shadow */}
-            <div className="absolute -inset-6 rounded-full bg-black/8 blur-3xl" />
+            {/* Ring 1 — outer, slow CW rotation */}
+            <motion.div
+              className="absolute -inset-8 md:-inset-12 rounded-full border border-white/[0.07]"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+            />
 
-            {/* Portrait */}
-            <div className="relative w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 rounded-full overflow-hidden border-2 border-black/10">
+            {/* Ring 2 — mid, CCW rotation */}
+            <motion.div
+              className="absolute -inset-4 md:-inset-6 rounded-full border border-white/[0.1]"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+            />
+
+            {/* Ring 3 — inner, dashed accent, CW */}
+            <motion.div
+              className="absolute -inset-1.5 md:-inset-2 rounded-full border border-white/[0.15]"
+              style={{ borderStyle: "dashed" }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+            />
+
+            {/* Floating portrait */}
+            <motion.div
+              className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-[360px] md:h-[360px] rounded-full overflow-hidden border border-white/10"
+              animate={{ y: [-4, 4, -4] }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
               <Image
                 src="/my-profile-image.png"
                 alt="Wai Yan Aung"
                 fill
                 priority
                 quality={95}
-                sizes="(max-width: 640px) 192px, (max-width: 768px) 240px, 288px"
-                className="object-cover scale-110"
+                sizes="(max-width: 640px) 256px, (max-width: 768px) 320px, 360px"
+                className="object-cover "
               />
-            </div>
+            </motion.div>
           </div>
         </motion.div>
 
-        {/* ── Bottom row: intro + CTAs ── */}
+        {/* ── Bottom row: intro left / CTAs right ── */}
         <div className="flex items-end justify-between pb-10 md:pb-14">
-          {/* Intro text */}
-          <motion.h3
-            className="max-w-sm font-mono leading-relaxed font-medium text-black"
+          <motion.div
+            className="max-w-sm"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            <p className="font-mono font-bold">HI, I&lsquo;m WAI YAN AUNG</p>
-            {t.hero.shortIntro}
-          </motion.h3>
+            <p className="font-label uppercase tracking-[0.2em] text-white/90 font-semibold mb-3">
+              {t.hero.greeting}
+            </p>
+            <p className="font-body  md:text-lg leading-relaxed text-white/90">
+              {t.hero.shortIntro}
+            </p>
+          </motion.div>
 
-          {/* CTAs */}
           <motion.div
             className="flex items-center gap-3 shrink-0 ml-6"
             initial={{ opacity: 0, y: 12 }}
@@ -122,7 +165,7 @@ export default function Hero() {
               href="/Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-semibold bg-black text-white hover:bg-black/80 transition-colors duration-200"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-semibold bg-accent text-black hover:bg-accent/90 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg shadow-black/10"
             >
               {t.hero.viewResume}
               <ArrowUpRight className="w-4 h-4" />
@@ -133,7 +176,7 @@ export default function Hero() {
                   .getElementById("work")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-semibold border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-200"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-sm font-semibold border border-white/25 text-white hover:bg-white/10 hover:border-white/40 hover:scale-105 active:scale-95 transition-all duration-300"
             >
               {t.hero.viewProjects}
             </button>
@@ -147,13 +190,13 @@ export default function Hero() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.5 }}
         >
-          <span className="font-label text-[10px] uppercase tracking-[0.15em] text-black/60">
+          <span className="font-label text-[10px] uppercase tracking-[0.15em] text-white/75">
             Scroll
           </span>
           <motion.div
             animate={{ y: [0, 7, 0] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            className="text-black/30"
+            className="text-white/20"
           >
             <ArrowDown className="w-4 h-4" />
           </motion.div>

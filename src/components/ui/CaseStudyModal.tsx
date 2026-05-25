@@ -76,7 +76,7 @@ export default function CaseStudyModal({ project, onClose }: Props) {
             <button
               onClick={onClose}
               aria-label={t.caseStudy.close}
-              className=" absolute top-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/50 backdrop-blur-md text-white/80 shadow-lg shadow-black/20 transition-all duration-300 ease-out hover:scale-105 hover:border-white/20 hover:bg-white/10 hover:text-white active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0492fb]focus-visible:ring-offset-2
+              className=" absolute top-4 right-4 z-10 flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-black/10 cursor-pointer backdrop-blur-lg text-white/80 shadow-lg shadow-black/20 transition-all duration-300 ease-out hover:scale-105 hover:border-white/20 hover:bg-white/10 hover:text-white active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0492fb]focus-visible:ring-offset-2
 focus-visible:ring-offset-black"
               style={{
                 borderColor: "var(--border-mid)",
@@ -124,18 +124,23 @@ focus-visible:ring-offset-black"
               {/* Header */}
               <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
                 <div>
-                  <p
-                    className="font-label text-label uppercase tracking-[0.12em] mb-1.5"
-                    style={{ color: "var(--text-muted)" }}
-                  >
+                  <p className="font-label text-label uppercase tracking-[0.12em] mb-1.5">
                     {t.caseStudy.caseStudy}
                   </p>
-                  <h2
-                    className="font-display text-4xl sm:text-5xl font-extrabold tracking-[-0.02em]"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    {project.title}
-                  </h2>
+                  {project.logo ? (
+                    <img
+                      src={project.logo}
+                      alt={project.title}
+                      className="h-11 sm:h-14 w-auto object-contain object-left"
+                    />
+                  ) : (
+                    <h2
+                      className="font-display text-4xl sm:text-5xl font-extrabold tracking-[-0.02em]"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {project.title}
+                    </h2>
+                  )}
                 </div>
                 <div className="flex items-center gap-2.5 shrink-0">
                   {project.url && (
@@ -144,7 +149,7 @@ focus-visible:ring-offset-black"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={t.caseStudy.liveSite}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-accent text-white hover:bg-violet/80 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#0492fb] focus-visible:outline-none"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold bg-accent-light text-white hover:bg-violet/80 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-[#0492fb] focus-visible:outline-none"
                       data-cursor-hover
                     >
                       {t.caseStudy.liveSite}{" "}

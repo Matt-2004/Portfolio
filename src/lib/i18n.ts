@@ -1,19 +1,53 @@
 export const translations = {
   en: {
     hero: {
-      role: "Full Stack Coder",
-      manifesto:
-        "I build scalable, production-grade frontend systems focused on performance, accessibility, and exceptional user experience.",
+      role: "Software Engineer",
+      greeting: "HI, I'M WAI YAN AUNG",
       shortIntro:
-        "Frontend engineer specializing in React ecosystems, modern UI architecture, and performant web applications.",
+        "I craft fast, polished web experiences — from first render to final deployment.",
+      status: "Open to Work",
+      location: "Bangkok",
       viewResume: "Resume",
       viewProjects: "View Projects",
       hireMe: "Hire Me",
     },
     about: {
       title: "About",
-      p1: "I'm a frontend engineer specializing in production-grade TypeScript and React applications. I focus on scalable architecture, performance optimization, and building UI systems that hold up under real-world complexity — not just look good in demos.",
-      p2: "Currently pursuing a B.Sc. in Computer Science at Assumption University while shipping full-scale applications solo. I own projects end-to-end: from architecture decisions and data flow design to testing infrastructure and deployment pipelines. My approach prioritizes maintainability, type safety, and measurable performance — the kind of engineering that keeps systems stable as they grow.",
+      headline: "More than code.",
+      intro:
+        "I'm a builder drawn to the space where design, technology, and human behavior meet. What drives me is crafting experiences that feel intuitive, look polished, and hold up under real-world complexity — not just in demos, but in production.",
+      values: [
+        {
+          label: "Craft",
+          description:
+            "Great software is made of thousands of small, deliberate decisions. Every detail matters.",
+        },
+        {
+          label: "Curiosity",
+          description:
+            "I learn by building. Each project is a chance to go deeper — performance, accessibility, system design.",
+        },
+        {
+          label: "Ownership",
+          description:
+            "I take ideas from concept to production. Architecture, testing, deployment — I care about the full picture.",
+        },
+      ],
+      whatIBuild: {
+        label: "What I enjoy building",
+        items: [
+          "Products that people reach for every day",
+          "Design systems that make consistency effortless",
+          "Tools that multiply what small teams can do",
+        ],
+      },
+      stats: [
+        { value: "3+", label: "Years building for the web" },
+        { value: "5+", label: "Production apps shipped" },
+        { value: "Bangkok", label: "Based in" },
+      ],
+      availability:
+        "Currently open to frontend engineering roles — let's build something great together.",
     },
     skills: {
       title: "Technical Skills",
@@ -102,18 +136,52 @@ export const translations = {
   zh: {
     hero: {
       role: "全栈工程师",
-      manifesto:
-        "我构建可扩展的生产级前端系统，专注于性能、可访问性和卓越的用户体验。",
+      greeting: "你好，我是 WAI YAN AUNG",
       shortIntro:
-        "专注于 React 生态系统、现代 UI 架构和高性能 Web 应用的前端工程师。",
+        "打造快速、精致的网页体验——从首屏渲染到最终部署。",
+      status: "求职中",
+      location: "曼谷",
       viewResume: "简历",
       viewProjects: "查看项目",
       hireMe: "雇佣我",
     },
     about: {
-      title: "关于我",
-      p1: "我是一名专注于生产级 TypeScript 和 React 应用的前端工程师。专注于可扩展架构、性能优化，构建在真实复杂性下依然稳健的 UI 系统。",
-      p2: "目前在 Assumption University 攻读计算机科学学士学位，同时独立交付全栈应用。从架构决策、数据流设计到测试基础设施和部署流水线，我端到端地负责整个工程流程。",
+      title: "关于",
+      headline: "不止于代码。",
+      intro:
+        "我是一名热衷于设计、技术与用户体验交叉点的开发者。驱使我前进的不仅是写出优雅的代码，更是打造直观、精致且在真实复杂性下依然稳健的产品体验——不只是 Demo 好看，而是在生产环境中可靠运行。",
+      values: [
+        {
+          label: "匠心",
+          description:
+            "优秀的软件由成千上万个深思熟虑的小决策构成。每个细节都很重要。",
+        },
+        {
+          label: "好奇",
+          description:
+            "我通过实践学习。每个项目都是深入探索的机会——性能优化、无障碍设计、系统架构。",
+        },
+        {
+          label: "担当",
+          description:
+            "从创意到上线，我全程负责。架构、测试、部署——我关注完整的工程图景。",
+        },
+      ],
+      whatIBuild: {
+        label: "我热衷于构建",
+        items: [
+          "人们每天都会使用的产品",
+          "让一致性变得毫不费力的设计系统",
+          "能够放大小型团队能力的工具",
+        ],
+      },
+      stats: [
+        { value: "3+", label: "年 Web 开发经验" },
+        { value: "5+", label: "已交付生产应用" },
+        { value: "曼谷", label: "所在地" },
+      ],
+      availability:
+        "目前开放前端工程岗位机会——让我们一起打造出色的产品。",
     },
     skills: {
       title: "技术技能",

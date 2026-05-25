@@ -45,7 +45,10 @@ const Contact = () => {
           >
             {t.contact.sub}
           </p>
-          <p className="font-label text-[11px] uppercase tracking-[0.1em] mb-12" style={{ color: "var(--text-muted)" }}>
+          <p
+            className="font-label text-[11px] uppercase tracking-[0.1em] mb-12"
+            style={{ color: "var(--text-muted)" }}
+          >
             Based in Bangkok, Thailand · Open to remote & relocation
           </p>
         </ScrollReveal>
